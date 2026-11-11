@@ -1,0 +1,105 @@
+{
+  "_README": "Part A 实测数字，全部由 01_data_quality.py 运行产出；C 填 metrics.json 时从此处取，禁止照抄公开资料参考值。",
+  "split_id": "v1",
+  "generated_by": "A",
+  "generated_at": "2026-11-12T00:39:47",
+  "data": {
+    "n_rows": 41188,
+    "n_columns": 21,
+    "n_positive": 4640,
+    "n_negative": 36548,
+    "positive_rate": 0.112654,
+    "unknown_count_by_column": {
+      "job": 330,
+      "marital": 80,
+      "education": 1731,
+      "default": 8597,
+      "housing": 990,
+      "loan": 990
+    },
+    "n_pdays_999": 39673,
+    "n_duplicated_rows": 12,
+    "n_nan_cells": 0,
+    "n_train": 24712,
+    "n_validation": 8238,
+    "n_test": 8238,
+    "n_positive_by_fold": {
+      "train": 1188,
+      "validation": 912,
+      "test": 2540
+    },
+    "positive_rate_by_fold": {
+      "train": 0.048074,
+      "validation": 0.110706,
+      "test": 0.308327
+    },
+    "positive_rate_decile_by_row_order": [
+      {
+        "bucket": "0-10%",
+        "n": 4118,
+        "n_positive": 114,
+        "positive_rate": 0.027683
+      },
+      {
+        "bucket": "10-20%",
+        "n": 4119,
+        "n_positive": 145,
+        "positive_rate": 0.035203
+      },
+      {
+        "bucket": "20-30%",
+        "n": 4119,
+        "n_positive": 174,
+        "positive_rate": 0.042243
+      },
+      {
+        "bucket": "30-40%",
+        "n": 4119,
+        "n_positive": 273,
+        "positive_rate": 0.066278
+      },
+      {
+        "bucket": "40-50%",
+        "n": 4119,
+        "n_positive": 257,
+        "positive_rate": 0.062394
+      },
+      {
+        "bucket": "50-60%",
+        "n": 4118,
+        "n_positive": 225,
+        "positive_rate": 0.054638
+      },
+      {
+        "bucket": "60-70%",
+        "n": 4119,
+        "n_positive": 418,
+        "positive_rate": 0.101481
+      },
+      {
+        "bucket": "70-80%",
+        "n": 4119,
+        "n_positive": 494,
+        "positive_rate": 0.119932
+      },
+      {
+        "bucket": "80-90%",
+        "n": 4119,
+        "n_positive": 648,
+        "positive_rate": 0.15732
+      },
+      {
+        "bucket": "90-100%",
+        "n": 4119,
+        "n_positive": 1892,
+        "positive_rate": 0.459335
+      }
+    ],
+    "raw_file_bytes": 5834924,
+    "raw_sha256": "74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8",
+    "raw_download_date": "2026-11-11",
+    "separator": ";",
+    "split_method": "chronological holdout by original row order, no shuffle",
+    "seed_note": "SEED=42 只用于 B 的模型随机性；A 的切分不用任何随机性"
+  }
+}
