@@ -28,7 +28,7 @@
 | 正类 | `y == "yes"` 实测 **4640 行（11.2654%）**，约 89% 外呼无效 |
 | 许可 | **CC BY 4.0**，DOI 10.24432/C5K306 |
 | 引用 | Moro, S., Cortez, P. & Rita, P. (2014), *A Data-Driven Approach to Predict the Success of Bank Telemarketing*, Decision Support Systems 62:22–31 |
-| 本地快照 | `data/raw/bank-additional-full.csv`，5,834,924 bytes，sha256 `74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8`，落盘日期 2026-11-11 |
+| 本地快照 | `data/raw/bank-additional-full.csv`，5,793,735 bytes，sha256 `233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df`，落盘日期 2026-11-11（当前 CSV 使用 LF 换行；标签和行数与交付包中的 CRLF 快照一致） |
 
 > 数据集官方说明第 56 行原文："this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model." —— 这是 `duration` 必须剔除、只做含/不含消融的官方依据。
 
@@ -51,11 +51,11 @@
 | 13 | `pdays` | 距上次 campaign 联系的天数 | 数值 | 是 | 是 | 999 = 从未联系，哨兵值 |
 | 14 | `previous` | 本轮之前该客户被联系次数 | 数值 | 是 | 是 | 历史联系记录 |
 | 15 | `poutcome` | 上次营销活动结果 | 类别 | 是 | 是 | 简单规则基线按它排序 |
-| 16 | `emp.var.rate` | 就业变动率（季度宏观指标） | 数值 | 是 | 是 | 2008 金融危机期间可能漂移，时间留出能暴露 |
-| 17 | `cons.price.idx` | 消费者价格指数（月度） | 数值 | 是 | 是 | 宏观指标，同上 |
-| 18 | `cons.conf.idx` | 消费者信心指数（月度） | 数值 | 是 | 是 | 宏观指标，同上 |
-| 19 | `euribor3m` | 欧元同业拆借 3 月利率（日度） | 数值 | 是 | 是 | 宏观指标，同上 |
-| 20 | `nr.employed` | 就业人数（季度） | 数值 | 是 | 是 | 宏观指标，同上 |
+| 16 | `emp.var.rate` | 就业变动率（季度宏观指标） | 数值 | 是 | 否 | 通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险 |
+| 17 | `cons.price.idx` | 消费者价格指数（月度） | 数值 | 是 | 否 | 通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险 |
+| 18 | `cons.conf.idx` | 消费者信心指数（月度） | 数值 | 是 | 否 | 通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险 |
+| 19 | `euribor3m` | 欧元同业拆借 3 月利率（日度） | 数值 | 是 | 否 | 通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险 |
+| 20 | `nr.employed` | 就业人数（季度） | 数值 | 是 | 否 | 通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险 |
 | 21 | `y` | 客户是否订阅定期存款 | 类别 | 否 | 否 | 真值 / 标签，只用来对答案，绝不进模型 |
 
 `row_id` 是我们自建的行标识（0-based，**不是原始字段**），只用于切分与核对，明确丢弃、不进模型。
@@ -71,6 +71,7 @@
 - 无 NaN 单元格；清洗前后行数不变，所有处理决定与影响行数都在 T1 可查；
 - 类别不平衡 89:11 → 全猜 `no` 就有约 88.73% accuracy，**accuracy 不能当主指标**。
 - **实测发现：标签随时间漂移**。按原始行序十等分，订阅率从 2.77% 升到 45.93%；三段正类率 Train 4.81% / Validation 11.07% / Test 30.83%（见 `F1b_时间漂移证据.png`）。这既解释了「为什么必须按行序留出、不能随机切分」，也提醒 C：Test 命中数偏高源于数据本身，必须与两个基线同一切分比较；报告限制章要写「结论不外推到其他时期」。
+- **宏观字段筛选**：五个宏观字段虽然在通话前可知，且保留在数据字典中，但由于跨时期漂移风险，B 仅在 Train 拟合后用 Validation 比较含/不含宏观特征；当前主模型排除这五列，含宏观 Logistic 作为对照留档。此筛选不使用 Test 结果。
 
 ## 5. 切分协议（交给 B / C）
 

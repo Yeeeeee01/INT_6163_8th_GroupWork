@@ -126,11 +126,11 @@ DICTS = [
     ("pdays", "距上次 campaign 联系的天数", "数值", "是", "是", "999 = 从未联系，哨兵值"),
     ("previous", "本轮之前该客户被联系次数", "数值", "是", "是", "历史联系记录"),
     ("poutcome", "上次营销活动结果", "类别", "是", "是", "简单规则基线按它排序"),
-    ("emp.var.rate", "就业变动率（季度宏观指标）", "数值", "是", "是", "2008 金融危机期间可能漂移，时间留出能暴露"),
-    ("cons.price.idx", "消费者价格指数（月度）", "数值", "是", "是", "宏观指标，同上"),
-    ("cons.conf.idx", "消费者信心指数（月度）", "数值", "是", "是", "宏观指标，同上"),
-    ("euribor3m", "欧元同业拆借 3 月利率（日度）", "数值", "是", "是", "宏观指标，同上"),
-    ("nr.employed", "就业人数（季度）", "数值", "是", "是", "宏观指标，同上"),
+    ("emp.var.rate", "就业变动率（季度宏观指标）", "数值", "是", "否", "通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险"),
+    ("cons.price.idx", "消费者价格指数（月度）", "数值", "是", "否", "通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险"),
+    ("cons.conf.idx", "消费者信心指数（月度）", "数值", "是", "否", "通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险"),
+    ("euribor3m", "欧元同业拆借 3 月利率（日度）", "数值", "是", "否", "通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险"),
+    ("nr.employed", "就业人数（季度）", "数值", "是", "否", "通话前可知；Validation 宏观对照，主模型排除以降低时间漂移风险"),
     ("y", "客户是否订阅定期存款", "类别", "否", "否", "真值 / 标签，只用来对答案，绝不进模型"),
 ]
 dict_df = pd.DataFrame(
@@ -161,7 +161,7 @@ left_lines = [
     "历史联系：campaign / pdays / previous / poutcome",
     "宏观指标：emp.var.rate / cons.price.idx / cons.conf.idx",
     "          euribor3m / nr.employed",
-    f"共 {len(pre_cols)} 列 → 主模型可用",
+    f"共 {len(pre_cols)} 列通话前可知 → 主模型按验证集筛选",
 ]
 right_lines = [
     "duration：通话时长（秒）",
@@ -344,7 +344,7 @@ t1 = f"""# T1 数据质量表（Part A）
 - **无精确日期列**：只有 `month` / `day_of_week`，但官方说明文件明确「ordered by date (May 2008 → November 2010)」→ 按行序时间留出，不随机切分。
 - **无客户 ID**：一行 = 一个客户 × 某轮 campaign 的联系记录；自建 `row_id` 作主键，不进模型。
 - **敏感属性**：`age` / `job` / `marital` / `education` 不得单独作为联系依据，报告需写最小化使用与角色隔离。
-- **宏观五列**：`emp.var.rate` / `cons.price.idx` / `cons.conf.idx` / `euribor3m` / `nr.employed` 保留进模型，但 2008 金融危机期间可能漂移，时间留出正好能暴露。
+- **宏观五列**：`emp.var.rate` / `cons.price.idx` / `cons.conf.idx` / `euribor3m` / `nr.employed` 虽在通话前可知，但受时期变化影响；B 在 Train 拟合、Validation 对比含/不含宏观特征后，将其从最终主模型排除，并保留含宏观版本作对照。
 - **泄漏字段**：`duration` 通话结束后才知道，主模型剔除，只做含/不含消融；`y` 只作真值，绝不进模型。
 - **标签随时间漂移（实测，重要）**：按原始行序十等分，订阅率从首个 10% 的 {decile[0]['positive_rate']*100:.2f}% 升到末个 10% 的 {decile[-1]['positive_rate']*100:.2f}%（全量 {positive_rate*100:.4f}%）；三段正类率 Train {pos_rate_by_fold['train']*100:.2f}% / Validation {pos_rate_by_fold['validation']*100:.2f}% / Test {pos_rate_by_fold['test']*100:.2f}%。这不是切分错误，官方说明数据按日期排序、后期 campaign 命中率明显更高。三个含义：① 随机切分会掩盖漂移、让分数虚高，所以必须按行序留出；② Test 的命中数偏高是数据本身造成，**C 必须与两个基线同一切分比较**，不能拿绝对命中数当模型的功劳；③ 报告限制章要写「结论不外推到其他时期」。配图 `figures/F1b_时间漂移证据.png`。
 
@@ -361,6 +361,4 @@ t1 = f"""# T1 数据质量表（Part A）
 """
 (OUT / "T1_数据质量表.md").write_text(t1, encoding="utf-8")
 print("[表] T1 已写出")
-
-
 

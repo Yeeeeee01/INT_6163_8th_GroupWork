@@ -1,0 +1,8 @@
+model,validation_pr_auc,precision_at_30pct,recall_at_30pct,hits_at_30pct,accuracy_at_0_5,precision_at_0_5,recall_at_0_5,selected_parameters,selection_basis
+no_skill,0.110706,0.052589,0.142544,130,0.889294,0.000000,0.000000,{},fixed baseline
+poutcome_success,0.129198,0.069984,0.189693,173,0.884681,0.382716,0.067982,{},fixed baseline
+logistic,0.208120,0.197411,0.535088,488,0.889294,0.000000,0.000000,"{""C"": 100.0}",validation PR-AUC
+logistic_macro_control,0.098906,0.053803,0.145833,133,0.889294,0.000000,0.000000,"{""C"": 0.1}",validation PR-AUC
+decision_tree,0.125200,0.052184,0.141447,129,0.440155,0.127317,0.692982,"{""max_depth"": 8, ""min_samples_leaf"": 100}",validation PR-AUC
+random_forest,0.123399,0.135518,0.367325,335,0.889294,0.000000,0.000000,"{""max_depth"": 10, ""min_samples_leaf"": 50}",validation PR-AUC
+logistic_duration_ablation,0.388501,0.274272,0.743421,678,0.893057,0.563786,0.150219,"{""C"": 100.0}",validation PR-AUC

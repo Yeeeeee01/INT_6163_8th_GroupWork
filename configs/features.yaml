@@ -1,0 +1,63 @@
+split_id: v1
+label: y
+positive_label: "yes"
+row_id: row_id
+seed: 42
+
+feature_sets:
+  main:
+    - age
+    - job
+    - marital
+    - education
+    - default
+    - housing
+    - loan
+    - contact
+    - month
+    - day_of_week
+    - campaign
+    - pdays
+    - previous
+    - poutcome
+  macro_control:
+    - age
+    - job
+    - marital
+    - education
+    - default
+    - housing
+    - loan
+    - contact
+    - month
+    - day_of_week
+    - campaign
+    - pdays
+    - previous
+    - poutcome
+    - emp.var.rate
+    - cons.price.idx
+    - cons.conf.idx
+    - euribor3m
+    - nr.employed
+  duration_ablation:
+    - age
+    - job
+    - marital
+    - education
+    - default
+    - housing
+    - loan
+    - contact
+    - month
+    - day_of_week
+    - campaign
+    - pdays
+    - previous
+    - poutcome
+    - duration
+
+post_call_only:
+  - duration
+label_only:
+  - y
