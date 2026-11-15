@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "C",
+  "generated_at": "2026-11-14T14:24:58",
+  "source_files": {
+    "split": "outputs/split_v1.csv",
+    "scores": "outputs/scores.csv",
+    "labels": "data/raw/bank-additional-full.csv",
+    "validation_model_comparison": "outputs/T2_模型对比表.csv",
+    "part_a_summary": "outputs/A_summary.json"
+  },
+  "protocol": {
+    "split_id": "v1",
+    "split_method": "chronological holdout by original row order, no shuffle",
+    "label": "y",
+    "positive_label": "yes",
+    "test_row_id_min": 32950,
+    "test_row_id_max": 41187,
+    "test_rows": 8238,
+    "test_positive_rows": 2540,
+    "test_positive_rate": 0.308327,
+    "work_fraction": 0.3,
+    "k_at_30pct": 2472,
+    "ranking_rule": "risk descending; row_id ascending as deterministic tie-breaker",
+    "k_rule": "ceil(work_fraction * test_rows)",
+    "test_used_for_final_evaluation_only": true,
+    "test_label_read_location": "03_eval.py / load_test_labels()"
+  },
+  "selected_model": "logistic",
+  "models": {
+    "no_skill": {
+      "pr_auc": 0.3083272638990046,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.0,
+      "hits_at_k": 210,
+      "precision_at_k": 0.08495145631067962,
+      "recall_at_k": 0.08267716535433071,
+      "invalid_calls_at_k": 2262,
+      "missed_subscriptions_at_k": 2330,
+      "confusion_at_budget": {
+        "tp": 210,
+        "fp": 2262,
+        "fn": 2330,
+        "tn": 3436
+      }
+    },
+    "poutcome_success": {
+      "pr_auc": 0.43307518191070526,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.0,
+      "hits_at_k": 924,
+      "precision_at_k": 0.3737864077669903,
+      "recall_at_k": 0.3637795275590551,
+      "invalid_calls_at_k": 1548,
+      "missed_subscriptions_at_k": 1616,
+      "confusion_at_budget": {
+        "tp": 924,
+        "fp": 1548,
+        "fn": 1616,
+        "tn": 4150
+      }
+    },
+    "logistic": {
+      "pr_auc": 0.44827597373273753,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.0644736338,
+      "hits_at_k": 1200,
+      "precision_at_k": 0.4854368932038835,
+      "recall_at_k": 0.47244094488188976,
+      "invalid_calls_at_k": 1272,
+      "missed_subscriptions_at_k": 1340,
+      "confusion_at_budget": {
+        "tp": 1200,
+        "fp": 1272,
+        "fn": 1340,
+        "tn": 4426
+      }
+    },
+    "logistic_macro_control": {
+      "pr_auc": 0.33882346019332993,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 1.063141718e-05,
+      "hits_at_k": 921,
+      "precision_at_k": 0.3725728155339806,
+      "recall_at_k": 0.36259842519685037,
+      "invalid_calls_at_k": 1551,
+      "missed_subscriptions_at_k": 1619,
+      "confusion_at_budget": {
+        "tp": 921,
+        "fp": 1551,
+        "fn": 1619,
+        "tn": 4147
+      }
+    },
+    "decision_tree": {
+      "pr_auc": 0.43957494205651143,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.07772020725,
+      "hits_at_k": 1161,
+      "precision_at_k": 0.4696601941747573,
+      "recall_at_k": 0.4570866141732283,
+      "invalid_calls_at_k": 1311,
+      "missed_subscriptions_at_k": 1379,
+      "confusion_at_budget": {
+        "tp": 1161,
+        "fp": 1311,
+        "fn": 1379,
+        "tn": 4387
+      }
+    },
+    "random_forest": {
+      "pr_auc": 0.40494031005119663,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.05749370912,
+      "hits_at_k": 1054,
+      "precision_at_k": 0.42637540453074435,
+      "recall_at_k": 0.4149606299212598,
+      "invalid_calls_at_k": 1418,
+      "missed_subscriptions_at_k": 1486,
+      "confusion_at_budget": {
+        "tp": 1054,
+        "fp": 1418,
+        "fn": 1486,
+        "tn": 4280
+      }
+    },
+    "logistic_duration_ablation": {
+      "pr_auc": 0.536351663915948,
+      "contact_fraction": 0.3,
+      "k": 2472,
+      "threshold_at_kth_risk": 0.03128365492,
+      "hits_at_k": 1434,
+      "precision_at_k": 0.5800970873786407,
+      "recall_at_k": 0.5645669291338583,
+      "invalid_calls_at_k": 1038,
+      "missed_subscriptions_at_k": 1106,
+      "confusion_at_budget": {
+        "tp": 1434,
+        "fp": 1038,
+        "fn": 1106,
+        "tn": 4660
+      }
+    }
+  },
+  "business": {
+    "primary_comparator": "poutcome_success",
+    "definitions": {
+      "extra_hits_vs_rule": "主模型@K命中数 - poutcome_success规则基线@K命中数",
+      "invalid_calls_avoided_vs_rule": "规则基线@K的无效电话数 - 主模型@K的无效电话数",
+      "missed_subscriptions_at_k": "Test真实订阅总数 - 主模型@K命中数",
+      "extra_hits_vs_no_skill": "主模型@K命中数 - no_skill@K命中数（仅对照）"
+    },
+    "k": 2472,
+    "test_positive_rows": 2540,
+    "main_hits_at_k": 1200,
+    "rule_baseline_hits_at_k": 924,
+    "no_skill_hits_at_k": 210,
+    "extra_hits_vs_rule": 276,
+    "invalid_calls_avoided_vs_rule": 276,
+    "missed_subscriptions_at_k": 1340,
+    "extra_hits_vs_no_skill": 990
+  },
+  "ablation": {
+    "compared_models": [
+      "logistic",
+      "logistic_duration_ablation"
+    ],
+    "test_pr_auc_main": 0.44827597373273753,
+    "test_pr_auc_with_duration": 0.536351663915948,
+    "test_pr_auc_absolute_difference": 0.08807569018321049,
+    "test_pr_auc_relative_inflation": 0.19647649069794063,
+    "test_hits_main": 1200,
+    "test_hits_with_duration": 1434,
+    "test_hits_absolute_difference": 234,
+    "validation_pr_auc_main": 0.20812,
+    "validation_pr_auc_with_duration": 0.388501,
+    "uci_decision": "duration should be discarded if the intention is to have a realistic predictive model"
+  },
+  "error_slices": {
+    "dimensions": [
+      "poutcome",
+      "contact",
+      "job",
+      "campaign_bucket"
+    ],
+    "minimum_reported_slice_n": 100,
+    "rows": 21,
+    "small_sample_rows": 1,
+    "table": "outputs/T3_误差切片表.md"
+  },
+  "sensitivity": {
+    "fractions": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "models": [
+      "logistic",
+      "poutcome_success",
+      "no_skill"
+    ],
+    "rows": 30,
+    "interpretation": "K changes across fractions; 30% is the primary budget, others are sensitivity only."
+  },
+  "artifacts": {
+    "pr_curve": "figures/F3_PR曲线.png",
+    "budget_curve": "figures/F4_预算收益曲线.png",
+    "slice_table": "outputs/T3_误差切片表.md",
+    "duration_ablation_table": "outputs/T4_duration消融表.md",
+    "number_audit_table": "outputs/T5_数字核对表.md",
+    "model_comparison_table": "outputs/C_测试集模型比较表.md"
+  },
+  "guardrails": {
+    "single_source_of_truth": "outputs/metrics.json",
+    "metrics_json_locked_read_only": true,
+    "no_causal_claim": true,
+    "no_uplift_claim": true,
+    "does_not_claim_increase_subscription_rate": true,
+    "does_not_deploy_or_call_customers": true,
+    "sensitive_attributes_not_used_as_single_contact_rule": true,
+    "test_metrics_not_used_for_model_selection": true,
+    "duration_ablation_not_used_as_main_model": true,
+    "limitations": [
+      "Historical replay only; no untreated control group.",
+      "Observational associations, not causal effects.",
+      "Performance reflects one chronological Test period and should not be generalized across banks or periods.",
+      "The Test positive rate is 30.83%, materially higher than Train 4.81%, so absolute hit counts must not be attributed to the model alone."
+    ]
+  }
+}
