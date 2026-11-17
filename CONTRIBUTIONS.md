@@ -12,7 +12,7 @@
 | B | YANG BO | 建立规则及无技能基线，训练并以Validation选参，冻结特征及消融配置。对应产出：02_models.py、features.yaml、scores.csv、T2及系数表。 | 按已通过报告登记；对应文件见下表 |
 | C | ZHOU KEAO | 设计留出评价，复核AP/TopK、混淆矩阵和三项业务量，分析误差、消融及预算。对应产出：03_eval.ipynb、metrics.json、T3/T4/T5、F3/F4。 | 按已通过报告登记；对应文件见下表 |
 | D | ZHANG YANG | 撰写六章报告、行动与限制，核对联系限制回放及图表数字，整合复现说明、引用、GenAI和贡献材料。对应产出：report.docx、F5、T6及README。 | 按已通过报告登记；对应文件见下表 |
-| E | LIN QIAOSHUANG | 制作并讲述PPT，转录核对三项业务量及F4，回填PPT页码，呈现成员工作并准备问答。对应产出：slides.pptx及T5对应页码。 | 原分工保留；本轮暂缓PPT与页码工作 |
+| E | LIN QIAOSHUANG | 制作并讲述PPT，转录核对三项业务量及F4，回填PPT页码，呈现成员工作并准备问答。对应产出：slides.pptx及T5对应页码。 |  |
 
 ## 文件与可核验图表对应
 
