@@ -1,0 +1,13 @@
+# D04_01: fresh complete runs stay out of version control.
+/runs/
+# P01: machine-specific files and standalone repair guides remain local.
+/.venv/
+/.vscode/
+/local_review/
+__pycache__/
+*.py[cod]
+/docs/PROGRESS.md
+/docs/ABC_FIX_LOG.md
+/docs/A01_FIX_GUIDE.md
+/docs/B01_FIX_GUIDE.md
+/docs/C01_FIX_GUIDE.md

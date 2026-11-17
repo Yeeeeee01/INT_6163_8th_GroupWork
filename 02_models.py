@@ -1,9 +1,30 @@
 # -*- coding: utf-8 -*-
-"""Part B: fit comparable baselines and models using the frozen Part A split."""
+# [B01-01 原代码开始] 明确环境依据、候选输出和原冻结结果保护
+# """Part B: fit comparable baselines and models using the frozen Part A split."""
+# [B01-01 原代码结束]
+# [B01-01 修订代码开始]
+"""Part B B01：保持GitHub训练方案，补充环境核对、候选隔离及来源记录。
+
+环境按GitHub README Python3.9+与原requirements；本机实测版本只作记录。
+默认写入local_review/B01_candidate，保留与C冻结指标配对的根目录原scores。
+命令：python 02_models.py --output-root local_review/B01_candidate
+"""
+# [B01-01 修订代码结束]
 
 from __future__ import annotations
 
 import json
+
+# [B01-02 新增] 增加追溯所需标准库，不改变模型依赖版本
+import argparse
+import hashlib
+import importlib.metadata
+import platform
+import shutil
+import sys
+from datetime import datetime
+from math import isfinite
+# [B01-02 新增结束]
 from math import ceil
 from pathlib import Path
 
@@ -22,7 +43,13 @@ ROOT = Path(__file__).resolve().parent
 RAW = ROOT / "data" / "raw" / "bank-additional-full.csv"
 SPLIT = ROOT / "outputs" / "split_v1.csv"
 CONFIG = ROOT / "configs" / "features.yaml"
-OUTPUT = ROOT / "outputs"
+# [B01-03 原代码开始] 新训练候选不覆盖与原C指标配对的预测文件
+# OUTPUT = ROOT / "outputs"
+# [B01-03 原代码结束]
+# [B01-03 修订代码开始]
+LEGACY_OUTPUT = ROOT / "outputs"
+OUTPUT = ROOT / "local_review" / "B01_candidate" / "outputs"
+# [B01-03 修订代码结束]
 SEED = 42
 POSITIVE_LABEL = "yes"
 MODEL_ORDER = (
@@ -67,6 +94,186 @@ MACRO_FEATURES = [
 ]
 
 
+# [B01-04 新增] 运行记录与候选隔离；模型实现保留
+
+GITHUB_BASE_COMMIT = "bfdfedb3e6cf82ea59254279a5352af4f2a395e8"
+GITHUB_EXPECTED_REQUIREMENTS = {"pandas": "2.2.3", "scikit-learn": "1.6.1", "PyYAML": "6.0.2", "matplotlib": "3.9.4"}
+GITHUB_NORMALIZED_HASHES = {'data/raw/bank-additional-full.csv': '233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df', 'outputs/split_v1.csv': 'a6a452d080788aae533dd043e44dced2a9eac95e7ec4a2b39248394b83eaa0aa', 'configs/features.yaml': '09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd', 'requirements.txt': 'd0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f', 'outputs/scores.csv': 'b354c6cb35d3c6ef2f39d2b6b66a3c136319e072bc62770f5aecc615735cc2bc'}
+
+
+def file_evidence(path):
+    """Return actual bytes and LF-normalized fingerprints without rewriting input."""
+    content = path.read_bytes()
+    normalized = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return {"path": path.relative_to(ROOT).as_posix(), "bytes": len(content),
+            "sha256": hashlib.sha256(content).hexdigest(),
+            "lf_normalized_sha256": hashlib.sha256(normalized).hexdigest()}
+
+
+def inspect_github_environment():
+    """Check declared requirements; separately record, rather than prescribe, observations."""
+    if sys.version_info < (3, 9):
+        raise RuntimeError("GitHub README要求Python3.9或以上")
+    declared = {}
+    for line in (ROOT / "requirements.txt").read_text(encoding="utf-8").splitlines():
+        if line.strip() and not line.lstrip().startswith("#"):
+            name, version = line.strip().split("==", 1)
+            declared[name] = version
+    if declared != GITHUB_EXPECTED_REQUIREMENTS:
+        raise RuntimeError("requirements与本次GitHub基线声明不同；请核实上游版本，不采用本机另定标准")
+    for name, version in declared.items():
+        installed = importlib.metadata.version(name)
+        if installed != version:
+            raise RuntimeError(f"GitHub依赖不符：{name}要求{version}，实际{installed}")
+    observed = {}
+    for name in [*declared, "numpy", "scipy", "joblib", "threadpoolctl"]:
+        try:
+            observed[name] = importlib.metadata.version(name)
+        except importlib.metadata.PackageNotFoundError:
+            observed[name] = None
+    return {
+        "authority": {"repository": "Yeeeeee01/INT_6163_8th_GroupWork", "baseline_commit": GITHUB_BASE_COMMIT,
+                      "python_minimum": "3.9", "declared_requirements": declared},
+        "not_provided_by_upstream": ["B_training_python_exact_version", "B_training_numpy_version",
+                                     "B_training_scipy_version", "B_training_joblib_version",
+                                     "B_training_threadpoolctl_version", "complete_original_environment_lock"],
+        "observed_for_this_run_only": {"python": sys.version, "system": platform.system(),
+                                       "machine": platform.machine(), "packages": observed},
+        "observed_environment_is_project_standard": False,
+    }
+
+
+def inspect_inputs():
+    """Bind this run to the frozen GitHub data, split and feature configuration."""
+    result = {}
+    for relative in ["data/raw/bank-additional-full.csv", "outputs/split_v1.csv", "configs/features.yaml", "requirements.txt"]:
+        evidence = file_evidence(ROOT / relative)
+        if evidence["lf_normalized_sha256"] != GITHUB_NORMALIZED_HASHES[relative]:
+            raise ValueError(f"输入与GitHub冻结基线内容不一致：{relative}")
+        result[relative] = evidence
+    result["02_models.py"] = file_evidence(ROOT / "02_models.py")
+    return result
+
+
+def parse_b01_arguments():
+    parser = argparse.ArgumentParser(description="B01：按GitHub方案训练并记录隔离候选")
+    parser.add_argument("--output-root", type=Path, default=ROOT / "local_review" / "B01_candidate")
+    args = parser.parse_args()
+    args.output_root = args.output_root.resolve()
+    if args.output_root == ROOT or ROOT not in args.output_root.parents:
+        raise ValueError("B01候选输出必须在项目子目录内，不能覆盖根目录原scores与C冻结结果")
+    return args
+
+
+def archive_b_outputs():
+    """Keep exact prior generated files before replacing candidate output."""
+    names = ["scores.csv", "T2_模型对比表.csv", "T2_模型对比表.md", "model_selection_pool.csv",
+             "logistic_coefficients.csv", "B_run_manifest.json", "B_legacy_comparison.json"]
+    existing = [name for name in names if (OUTPUT / name).is_file()]
+    if not existing:
+        return
+    archive = OUTPUT.parent / "B01_generated_before" / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    archive.mkdir(parents=True, exist_ok=False)
+    manifest = {}
+    for name in existing:
+        shutil.copy2(OUTPUT / name, archive / name)
+        manifest[name] = hashlib.sha256((OUTPUT / name).read_bytes()).hexdigest()
+    (archive / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def validate_candidate_scores(scores, split):
+    """Check score schema, coverage and probability range without reading Test labels."""
+    if scores.columns.tolist() != ["row_id", "fold", "model", "risk"]:
+        raise ValueError("预测输出必须为row_id,fold,model,risk")
+    if scores.duplicated(["row_id", "fold", "model"]).any():
+        raise ValueError("预测输出存在重复键")
+    if not scores["risk"].map(lambda x: isfinite(x) and 0 <= x <= 1).all():
+        raise ValueError("预测分数含缺失、无穷或超出[0,1]的值")
+    if set(scores["model"]) != set(MODEL_ORDER) or set(scores["fold"]) != {"validation", "test"}:
+        raise ValueError("预测模型或分段集合不完整")
+    for fold in ["validation", "test"]:
+        ids = split.loc[split["fold"].eq(fold), "row_id"].tolist()
+        for model in MODEL_ORDER:
+            actual = scores.loc[scores["fold"].eq(fold) & scores["model"].eq(model), "row_id"].tolist()
+            if actual != ids:
+                raise ValueError(f"预测行号覆盖不一致：{fold}/{model}")
+
+
+def write_b_markdown(path, content):
+    """Preserve previous Markdown as a comment, with an exact backup made beforehand."""
+    begin = "<!-- B01_ORIGINAL_MARKDOWN_BEGIN\n"
+    end = "\nB01_ORIGINAL_MARKDOWN_END -->\n"
+    if path.exists():
+        old = path.read_text(encoding="utf-8")
+        if old.startswith(begin) and end in old:
+            prefix = old.split(end, 1)[0] + end
+        elif "-->" not in old:
+            prefix = begin + old + end
+        else:
+            raise ValueError("旧Markdown含其他注释，已保留备份；需核对后再生成")
+    else:
+        prefix = begin + "本次新生成，无被替换旧稿。" + end
+    path.write_text(prefix + "\n" + content, encoding="utf-8")
+
+
+def compare_legacy_scores():
+    """Compare saved risk values only; never compute Test performance or read Test y."""
+    reference = LEGACY_OUTPUT / "scores.csv"
+    result = {"reference_commit": GITHUB_BASE_COMMIT, "test_labels_read": False,
+              "status": "reference_not_available", "rows": [],
+              "interpretation": "Differences are diagnostic; candidate scores do not replace the original frozen results."}
+    if not reference.is_file():
+        return result
+    result["reference_fingerprint"] = file_evidence(reference)
+    if result["reference_fingerprint"]["lf_normalized_sha256"] != GITHUB_NORMALIZED_HASHES["outputs/scores.csv"]:
+        result["status"] = "reference_not_confirmed_as_original_github"
+        return result
+    old = pd.read_csv(reference)
+    new = pd.read_csv(OUTPUT / "scores.csv")
+    aligned = new.merge(old, on=["row_id", "fold", "model"], suffixes=("_candidate", "_original"), validate="one_to_one")
+    if len(aligned) != len(old) or len(new) != len(old):
+        raise ValueError("新旧预测键不一致，不能进行逐行比较")
+    for (model, fold), group in aligned.groupby(["model", "fold"], sort=True):
+        diff = (group["risk_candidate"] - group["risk_original"]).abs()
+        result["rows"].append({"model": model, "fold": fold, "rows": len(group),
+                               "different_risk_rows": int(diff.ne(0).sum()),
+                               "max_abs_risk_difference": float(diff.max())})
+    result["exact_numeric_prediction_match"] = all(row["different_risk_rows"] == 0 for row in result["rows"])
+    result["status"] = "exact_prediction_match" if result["exact_numeric_prediction_match"] else "prediction_differences_recorded"
+    result["historical_training_environment_recovered"] = False
+    return result
+
+
+def write_run_manifest(environment, inputs, split, selected, config):
+    """Publish provenance for a complete candidate run, not a new project standard."""
+    if inspect_inputs() != inputs:
+        raise RuntimeError("训练期间输入或源码发生变化，拒绝将结果标为完整候选")
+    comparison = compare_legacy_scores()
+    comparison_path = OUTPUT / "B_legacy_comparison.json"
+    comparison_path.write_text(json.dumps(comparison, ensure_ascii=False, indent=2), encoding="utf-8")
+    generated = ["scores.csv", "T2_模型对比表.csv", "T2_模型对比表.md", "model_selection_pool.csv",
+                 "logistic_coefficients.csv", "B_legacy_comparison.json"]
+    manifest = {
+        "schema_version": "B01-1.0", "stage": "B01", "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "release_status": "candidate_only_not_C_frozen", "environment": environment,
+        "input_fingerprints": inputs,
+        "protocol": {"split_id": config["split_id"], "fold_rows": split["fold"].value_counts().to_dict(),
+                     "seed": SEED, "positive_label": POSITIVE_LABEL, "selection_fold": "validation",
+                     "test_labels_used_by_B": False, "rank_rule": "risk descending; row_id ascending",
+                     "validation_budget_fraction": 0.30, "model_order": list(MODEL_ORDER),
+                     "feature_sets": config["feature_sets"]},
+        "selected_parameters": {name: params for name, (_, params, _) in selected.items()},
+        "output_fingerprints": {name: file_evidence(OUTPUT / name) for name in generated},
+        "legacy_comparison_status": comparison["status"],
+        "historical_exact_retraining_reproduction": "not_established_from_available_github_environment_information",
+        "original_frozen_scores_replaced": False,
+    }
+    (OUTPUT / "B_run_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[B01_LEGACY] {comparison['status']}；只记录差异，不改原冻结结果")
+    print(f"[B01_PASS] 候选与追溯记录完整：{OUTPUT}；历史训练环境精确复原尚未证实")
+
+# [B01-04 新增结束]
+
 def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, dict]:
     if not RAW.exists():
         raise FileNotFoundError(f"找不到原始数据：{RAW}")
@@ -77,6 +284,15 @@ def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, dict]:
 
     split = pd.read_csv(SPLIT)
     config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
+
+# [B01-05 新增] 避免配置与实际执行静默不一致，不重新选种子
+    if split.columns.tolist() != ["row_id", "fold"] or split.isna().any().any():
+        raise ValueError("切分字段必须为row_id,fold且不含缺失")
+    if not pd.api.types.is_integer_dtype(split["row_id"]) or split["row_id"].duplicated().any():
+        raise ValueError("切分row_id必须为无重复整数")
+    if config.get("seed") != SEED or config.get("positive_label") != POSITIVE_LABEL or config.get("label") != "y" or config.get("row_id") != "row_id":
+        raise ValueError("配置种子、正类、标签或行号与GitHub既定协议不一致")
+# [B01-05 新增结束]
 
     if config["split_id"] != "v1":
         raise ValueError(f"特征配置 split_id 必须为 v1，实际为 {config['split_id']!r}")
@@ -109,6 +325,11 @@ def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, dict]:
 
 def get_features(config: dict, feature_set: str) -> list[str]:
     features = config["feature_sets"][feature_set]
+
+# [B01-06 新增] 特征清单先检查重复与结构，保留实际字段方案
+    if not isinstance(features, list) or len(features) != len(set(features)):
+        raise ValueError(f"{feature_set}必须是无重复字段的列表")
+# [B01-06 新增结束]
     if "y" in features or "row_id" in features:
         raise ValueError(f"{feature_set} 特征集不得包含标签 y 或 row_id")
     if feature_set == "main" and "duration" in features:
@@ -233,8 +454,19 @@ def positive_probabilities(model: Pipeline, features: pd.DataFrame) -> pd.Series
     return pd.Series(model.predict_proba(features)[:, positive_index], index=features.index)
 
 
+# [B01-07 原代码开始] 训练前核对GitHub输入与环境，明确候选输出位置
+# def main() -> None:
+#     data, split, labels, config = load_inputs()
+# [B01-07 原代码结束]
+# [B01-07 修订代码开始]
 def main() -> None:
+    global OUTPUT
+    args = parse_b01_arguments()
+    OUTPUT = args.output_root / "outputs"
+    environment = inspect_github_environment()
+    input_fingerprints = inspect_inputs()
     data, split, labels, config = load_inputs()
+# [B01-07 修订代码结束]
     main_features = get_features(config, "main")
     macro_control_features = get_features(config, "macro_control")
     ablation_features = get_features(config, "duration_ablation")
@@ -370,7 +602,13 @@ def main() -> None:
                     }
                 )
 
+# [B01-08 原代码开始] 覆盖候选生成件之前保存原文件，不触及根目录冻结产物
+#     OUTPUT.mkdir(parents=True, exist_ok=True)
+# [B01-08 原代码结束]
+# [B01-08 修订代码开始]
     OUTPUT.mkdir(parents=True, exist_ok=True)
+    archive_b_outputs()
+# [B01-08 修订代码结束]
     scores = pd.concat(score_frames, ignore_index=True)
     scores["model"] = pd.Categorical(scores["model"], categories=MODEL_ORDER, ordered=True)
     scores["fold"] = pd.Categorical(
@@ -379,7 +617,13 @@ def main() -> None:
     scores = scores.sort_values(["fold", "model", "row_id"])
     scores["model"] = scores["model"].astype(str)
     scores["fold"] = scores["fold"].astype(str)
+# [B01-09 原代码开始] 输出前校验完整性，保留原10位有效数字导出格式
+#     scores.to_csv(OUTPUT / "scores.csv", index=False, float_format="%.10g")
+# [B01-09 原代码结束]
+# [B01-09 修订代码开始]
+    validate_candidate_scores(scores, split)
     scores.to_csv(OUTPUT / "scores.csv", index=False, float_format="%.10g")
+# [B01-09 修订代码结束]
 
     summary = pd.DataFrame(summary_rows)
     summary.to_csv(OUTPUT / "T2_模型对比表.csv", index=False, float_format="%.6f")
@@ -422,7 +666,12 @@ def main() -> None:
             "",
         ]
     )
-    (OUTPUT / "T2_模型对比表.md").write_text("\n".join(lines), encoding="utf-8")
+# [B01-10 原代码开始] Markdown保留旧文注释，结构化输出则保留有效格式并备份
+#     (OUTPUT / "T2_模型对比表.md").write_text("\n".join(lines), encoding="utf-8")
+# [B01-10 原代码结束]
+# [B01-10 修订代码开始]
+    write_b_markdown(OUTPUT / "T2_模型对比表.md", "\n".join(lines))
+# [B01-10 修订代码结束]
     logistic = selected["logistic"][0]
     feature_names = logistic.named_steps["preprocess"].get_feature_names_out()
     coefficients = logistic.named_steps["model"].coef_[0]
@@ -448,6 +697,10 @@ def main() -> None:
     print(f"[完成] {OUTPUT / 'T2_模型对比表.md'}")
     print(f"[完成] {OUTPUT / 'logistic_coefficients.csv'}")
     print(f"[完成] {OUTPUT / 'model_selection_pool.csv'}")
+
+# [B01-11 新增] 完整输出后生成可核验的运行清单与原预测差异记录
+    write_run_manifest(environment, input_fingerprints, split, selected, config)
+# [B01-11 新增结束]
 
 
 if __name__ == "__main__":
