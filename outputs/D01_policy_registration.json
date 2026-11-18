@@ -1,0 +1,29 @@
+{
+  "recorded_at_shanghai": "2026-11-17T15:26:54+08:00",
+  "policy": {
+    "policy_id": "D01_previous3_last_failure_v1",
+    "previous_minimum": 3,
+    "poutcome_equals": "failure",
+    "trigger_expression": "previous >= 3 and poutcome == failure",
+    "primary_scenario": "hold_no_refill",
+    "secondary_scenario": "hold_with_refill",
+    "budget_fraction": 0.3,
+    "ranking_rule": "risk descending, row_id ascending",
+    "review_action": "hold from automatic call list and send to human review",
+    "replay_review_assumption": "no human override or release in either scenario",
+    "threshold_basis": "illustrative assignment assumption: at least three prior contacts; not a bank-confirmed cap or outcome-optimized threshold",
+    "selection_method": "one rule fixed before this supplementary calculation; no threshold search or choice of better Test scenario",
+    "test_status": "post-hoc descriptive replay; Test results were already examined in C01",
+    "unit": "record-level gate using prior-contact count and last campaign result; no customer identifier",
+    "semantic_limit": "previous counts prior contacts, not confirmed failed contacts; poutcome describes the last campaign only",
+    "sensitive_fields_in_gate": []
+  },
+  "policy_sha256": "5a29855c7aefe65c8561115ccdd78c03173429aaf8e220a6c959ed9789a3492f",
+  "threshold_search_performed": false,
+  "business_authority": "illustrative assignment assumption, not bank-confirmed",
+  "initial_source_sha256": "c563156fb45416be1fb02426f2d330e338455091ce68e42dddd322173722d466",
+  "source_sha256": "65d5e4729186cd6b952ce2b4218188ba7eeb72280fbae921afc9e7c8994a37af",
+  "before_first_calculation_note": "只将说明中的PowerShell路径改为Python原始字符串，旧行注释保留；规则及policy_sha256未改变。",
+  "original_registration_sha256": "3194e5c777283a3cfb6064ff31a84d617cc24a2c7ee50615cd2965e4bfdbc3a0",
+  "note": "Public excerpt from the original pre-calculation record; source hashes are historical, current IO-only packaging changes leave the policy hash unchanged."
+}

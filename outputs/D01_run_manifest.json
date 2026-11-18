@@ -1,0 +1,82 @@
+{
+  "stage": "D01",
+  "status": "candidate_pending_user_validation",
+  "policy_sha256": "5a29855c7aefe65c8561115ccdd78c03173429aaf8e220a6c959ed9789a3492f",
+  "input_mode": "fresh_abc_run",
+  "source": {
+    "mode": "fresh_abc_run",
+    "run_directory": "abc",
+    "run_manifest": {
+      "bytes": 1620,
+      "sha256": "b27743f36451c36c55618eb66075ab71354269f28bb24fc740aecb0bd52c3e12",
+      "lf_normalized_sha256": "d6c18742656de5f73a1a5819627428f0d9d9051392f36329adb610b5abead459"
+    },
+    "cached_results_used": false,
+    "baseline_metrics_fingerprint": {
+      "bytes": 1005684,
+      "sha256": "fc6682172f293767eda70ea7b4e183f185767bfef13622b871f010ba88041c63",
+      "lf_normalized_sha256": "66ce079b005ce6de6052732111fd73c8e765e94336f8c0327b388d3ee828290a"
+    },
+    "raw_fingerprint": {
+      "bytes": 5793735,
+      "sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df",
+      "lf_normalized_sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df"
+    },
+    "b_manifest_fingerprint": {
+      "bytes": 6974,
+      "sha256": "934bee6b7beb43bc2d58c8a69e40a699def72f6b02b1cc346edcd34254105091",
+      "lf_normalized_sha256": "e78d0a0a1b38e842694afe0ec47eb42299d3bfadfa5bcf17816d0315a0315c09"
+    },
+    "c_manifest_fingerprint": {
+      "bytes": 6364,
+      "sha256": "b842fbaf1e0b5ae47ecfc51f2971d2710f1dd960b6fe3dff323072bb2d33fe06",
+      "lf_normalized_sha256": "fe5c3de001bf8dc796bd92600d836f95cf2fb0018ae111719dbcccec436b8e2d"
+    },
+    "scores_fingerprint": {
+      "bytes": 4817858,
+      "sha256": "deea4065800bf495a4a39f712fcbcda0347bc04e4de2f370d22d12e544a44cad",
+      "lf_normalized_sha256": "92865505e925cd6c7f1990fb3ecb174c77dae06e44bc8498ccec210201fd8369"
+    }
+  },
+  "source_code_fingerprint": {
+    "bytes": 27086,
+    "sha256": "660beccc1fc221feb3ff3fd543e810e5cab9b2288cf93079f2ab29a4c4427593",
+    "lf_normalized_sha256": "660beccc1fc221feb3ff3fd543e810e5cab9b2288cf93079f2ab29a4c4427593"
+  },
+  "output_fingerprints": {
+    "D01_policy_spec.json": {
+      "bytes": 1291,
+      "sha256": "7f37508ba79704720f54ce0f05d68ab119cc041b2ae97d81c0063cea756940e7",
+      "lf_normalized_sha256": "ffa0b023dc1e8940c6bbe285c2fce3d30a440ae5cb3ea853437ca1f6460abb8b"
+    },
+    "D01_逐记录审计.csv": {
+      "bytes": 1408382,
+      "sha256": "d2a7b4bb0b80631a7d48b0b80251df02af3833506f20a36a7c303cf3d1a7a1f2",
+      "lf_normalized_sha256": "d4621477210f62a8d7574424e5c3ca37307ade0a453505fd5d8405f87a312691"
+    },
+    "metrics.json": {
+      "bytes": 1016809,
+      "sha256": "f41fdcce02b5c300d6cfc3c772631b0c4e62c51966b2fe30c8ea4367d529f8d8",
+      "lf_normalized_sha256": "0c23e43dcc5a0bfdd7d3b8f38573a54098d9d4b6490519e919344605554330a8"
+    },
+    "T5_all_numbers.csv": {
+      "bytes": 2288840,
+      "sha256": "32aac5cd1eb0072efd97e572c0c94fb940da4150ab09b3b120ee9e0bf0e04e7b",
+      "lf_normalized_sha256": "c50fa8713e6a0d546268440dd5f5d91aa5dbeeae743a8d42aa46b4eb959da355"
+    },
+    "T5_数字核对表.md": {
+      "bytes": 9494,
+      "sha256": "93cd776ba570956e507c81deeebcd944521e02ce60ec2e01abe7e064adef6365",
+      "lf_normalized_sha256": "8045009f697ec47b47a1cdab845d1d87dce15986f0ba4f74d338294ca27a8d4a"
+    },
+    "T6_联系限制补充评价.md": {
+      "bytes": 2840,
+      "sha256": "c2980f3e6808f7674df36e75589bfe9e44f53a21bb13726c7b4b78f81cea101b",
+      "lf_normalized_sha256": "84357b892fddfd2b3c4795a86c20010a211e2da6e2c37c2c22b94435e3837c3c"
+    }
+  },
+  "preserved_all_c01_keys": true,
+  "threshold_search_performed": false,
+  "root_baseline_or_publication_bundle_modified": false,
+  "real_customer_calls_performed": false
+}

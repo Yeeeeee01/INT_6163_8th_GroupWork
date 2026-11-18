@@ -1,0 +1,132 @@
+{
+  "stage": "C01",
+  "generated_at": "2026-11-18T09:12:18",
+  "input_mode": "same_run_B01_output",
+  "input_fingerprints": {
+    "scores": {
+      "path": "local_review/B01_candidate/outputs/scores.csv",
+      "bytes": 4817858,
+      "sha256": "deea4065800bf495a4a39f712fcbcda0347bc04e4de2f370d22d12e544a44cad",
+      "lf_normalized_sha256": "92865505e925cd6c7f1990fb3ecb174c77dae06e44bc8498ccec210201fd8369"
+    },
+    "validation": {
+      "path": "local_review/B01_candidate/outputs/T2_模型对比表.csv",
+      "bytes": 954,
+      "sha256": "8a020b6ab5f5654c6ed7b8c67f23cc9ac8f968fd8e973dbf9717bdf7f2884c84",
+      "lf_normalized_sha256": "0ecb9cbe4990c55ca9c7e709c17e04599b1461c5943ebda41e1a733b72a72ae0"
+    },
+    "split": {
+      "path": "outputs/split_v1.csv",
+      "bytes": 557299,
+      "sha256": "1eff90604c673cd2623b1ad245734a6df885ff8b209952e1903da51f299d2a1a",
+      "lf_normalized_sha256": "a6a452d080788aae533dd043e44dced2a9eac95e7ec4a2b39248394b83eaa0aa"
+    },
+    "a_summary": {
+      "path": "outputs/A_summary.json",
+      "bytes": 3396,
+      "sha256": "5d97b523adce41f462428b88f4d8fd12a139171414b5c232f801713bdbb70a4f",
+      "lf_normalized_sha256": "2f82a465ff7f31d8a8bad9d5bf707e839cd89d2702fb1ce2700ec63fa5773343"
+    },
+    "raw": {
+      "path": "data/raw/bank-additional-full.csv",
+      "bytes": 5793735,
+      "sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df",
+      "lf_normalized_sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df"
+    },
+    "config": {
+      "path": "configs/features.yaml",
+      "bytes": 856,
+      "sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd",
+      "lf_normalized_sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd"
+    },
+    "c_source": {
+      "path": "03_eval.py",
+      "bytes": 40956,
+      "sha256": "93c76c8af997760ce48644177c6c012a892c5a11eaf8ef47e8206a8a8fcc8819",
+      "lf_normalized_sha256": "93c76c8af997760ce48644177c6c012a892c5a11eaf8ef47e8206a8a8fcc8819"
+    },
+    "c_support": {
+      "path": "c01_support.py",
+      "bytes": 24053,
+      "sha256": "2cac64bf75439133db3b6ba97b5c78377788652cabc17bb95a89994b0f27ce46",
+      "lf_normalized_sha256": "2cac64bf75439133db3b6ba97b5c78377788652cabc17bb95a89994b0f27ce46"
+    },
+    "requirements": {
+      "path": "requirements.txt",
+      "bytes": 66,
+      "sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f",
+      "lf_normalized_sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f"
+    },
+    "pool": {
+      "path": "local_review/B01_candidate/outputs/model_selection_pool.csv",
+      "bytes": 6113,
+      "sha256": "c4b9f8a66c2b0b704b284084b09200874a90eb4c9e3bcc68b01b8ee46062d4ed",
+      "lf_normalized_sha256": "2e0970d7e0c7ec92f8578e2e8c0af2e7f89186680ffc64a4c8522316e8495bda"
+    },
+    "coefficients": {
+      "path": "local_review/B01_candidate/outputs/logistic_coefficients.csv",
+      "bytes": 2758,
+      "sha256": "c1c73418cdd82139b7c480f374801caaab4f6699d7c32d7b2ea01cc004802d36",
+      "lf_normalized_sha256": "16971a206beebdeb519bba9784c01dcad51aad46a503ef4afaf3708566f8d677"
+    },
+    "b_manifest": {
+      "path": "local_review/B01_candidate/outputs/B_run_manifest.json",
+      "bytes": 6974,
+      "sha256": "934bee6b7beb43bc2d58c8a69e40a699def72f6b02b1cc346edcd34254105091",
+      "lf_normalized_sha256": "e78d0a0a1b38e842694afe0ec47eb42299d3bfadfa5bcf17816d0315a0315c09"
+    }
+  },
+  "output_fingerprints": {
+    "outputs/C_测试集模型比较表.md": {
+      "path": "local_review/C01_candidate/outputs/C_测试集模型比较表.md",
+      "bytes": 1000,
+      "sha256": "77ce5efbf9e2a46346a4c8b6ba5b3086da670f25eb60410bc76a7a049e5f44fd",
+      "lf_normalized_sha256": "98d643dba1d3a01eb3e4dd34d718ce0f5a1722f09b6dc4d1cda58ac91ec1b6dc"
+    },
+    "outputs/metrics.json": {
+      "path": "local_review/C01_candidate/outputs/metrics.json",
+      "bytes": 1005684,
+      "sha256": "fc6682172f293767eda70ea7b4e183f185767bfef13622b871f010ba88041c63",
+      "lf_normalized_sha256": "66ce079b005ce6de6052732111fd73c8e765e94336f8c0327b388d3ee828290a"
+    },
+    "outputs/T3_误差切片表.md": {
+      "path": "local_review/C01_candidate/outputs/T3_误差切片表.md",
+      "bytes": 3538,
+      "sha256": "6457ebec383163b38d0c61446a2496e1098329954dd8a9308acd0db3e969589f",
+      "lf_normalized_sha256": "a91f859249aa0bc22f29532705b015ffde6cdb296b9c01901e30ec899f288875"
+    },
+    "outputs/T4_duration消融表.md": {
+      "path": "local_review/C01_candidate/outputs/T4_duration消融表.md",
+      "bytes": 650,
+      "sha256": "e807deede8d7ec2e729657eb0f7f28c278e50b581d65530f91be4dc06c8a88b3",
+      "lf_normalized_sha256": "cbe741a862181e11f7c174dca0bbddd4edf00a39ebf5dcde33a84356dbb69cf7"
+    },
+    "outputs/T5_all_numbers.csv": {
+      "path": "local_review/C01_candidate/outputs/T5_all_numbers.csv",
+      "bytes": 2277334,
+      "sha256": "4030ad58c9728f56ffc4a2f04935ae87f1f8e9b7401f449481a971f84085e024",
+      "lf_normalized_sha256": "4631b6b3fddd443a7c90e47f3577b621be5bd8de04b2b51d3484f3c23250a88e"
+    },
+    "outputs/T5_数字核对表.md": {
+      "path": "local_review/C01_candidate/outputs/T5_数字核对表.md",
+      "bytes": 13973,
+      "sha256": "0d688056af87eb0a6a3463323737f4fd0a92f44f10deaa2ce125f40996746cfb",
+      "lf_normalized_sha256": "553d319d748de91cc3093028702a271566432ad5c81139079dab2aa5637ad4d9"
+    },
+    "figures/F3_PR曲线.png": {
+      "path": "local_review/C01_candidate/figures/F3_PR曲线.png",
+      "bytes": 81707,
+      "sha256": "0e724d873016988b32ed422a8561138ce046dba09e457eda43a4f8ba3f6bdf4c",
+      "lf_normalized_sha256": "7b1e4ec84e6f9bcb68afec5af848209833f802c6640c3dc9aae7863df2bb97a4"
+    },
+    "figures/F4_预算收益曲线.png": {
+      "path": "local_review/C01_candidate/figures/F4_预算收益曲线.png",
+      "bytes": 113822,
+      "sha256": "4b8f87b0bfa2acc9ffb5db45733d26efe362c0878ba0c48ea9b1e3e0961014b0",
+      "lf_normalized_sha256": "9a59389a77d73f010ed3d14b8744619399599b26e4ec5b1f025003f2986e1bbd"
+    }
+  },
+  "requires_identical_original_environment": false,
+  "status": "C01_paired_reproduction_candidate",
+  "root_legacy_files_replaced": false
+}

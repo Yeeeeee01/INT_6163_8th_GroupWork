@@ -1,0 +1,214 @@
+{
+  "schema_version": "B01-1.0",
+  "stage": "B01",
+  "generated_at": "2026-11-18T09:12:15",
+  "release_status": "candidate_only_not_C_frozen",
+  "environment": {
+    "authority": {
+      "repository": "Yeeeeee01/INT_6163_8th_GroupWork",
+      "baseline_commit": "bfdfedb3e6cf82ea59254279a5352af4f2a395e8",
+      "python_minimum": "3.9",
+      "declared_requirements": {
+        "pandas": "2.2.3",
+        "scikit-learn": "1.6.1",
+        "PyYAML": "6.0.2",
+        "matplotlib": "3.9.4"
+      }
+    },
+    "not_provided_by_upstream": [
+      "B_training_python_exact_version",
+      "B_training_numpy_version",
+      "B_training_scipy_version",
+      "B_training_joblib_version",
+      "B_training_threadpoolctl_version",
+      "complete_original_environment_lock"
+    ],
+    "observed_for_this_run_only": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "system": "Windows",
+      "machine": "AMD64",
+      "packages": {
+        "pandas": "2.2.3",
+        "scikit-learn": "1.6.1",
+        "PyYAML": "6.0.2",
+        "matplotlib": "3.9.4",
+        "numpy": "2.5.5",
+        "scipy": "1.18.1",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.8.0"
+      }
+    },
+    "observed_environment_is_project_standard": false
+  },
+  "input_fingerprints": {
+    "data/raw/bank-additional-full.csv": {
+      "path": "data/raw/bank-additional-full.csv",
+      "bytes": 5793735,
+      "sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df",
+      "lf_normalized_sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df"
+    },
+    "outputs/split_v1.csv": {
+      "path": "outputs/split_v1.csv",
+      "bytes": 557299,
+      "sha256": "1eff90604c673cd2623b1ad245734a6df885ff8b209952e1903da51f299d2a1a",
+      "lf_normalized_sha256": "a6a452d080788aae533dd043e44dced2a9eac95e7ec4a2b39248394b83eaa0aa"
+    },
+    "configs/features.yaml": {
+      "path": "configs/features.yaml",
+      "bytes": 856,
+      "sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd",
+      "lf_normalized_sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd"
+    },
+    "requirements.txt": {
+      "path": "requirements.txt",
+      "bytes": 66,
+      "sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f",
+      "lf_normalized_sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f"
+    },
+    "02_models.py": {
+      "path": "02_models.py",
+      "bytes": 33147,
+      "sha256": "b5cf1b91c63fd8b17d1778bc7e8756447217a2454c66dc45b6dfe0a441b90c21",
+      "lf_normalized_sha256": "b5cf1b91c63fd8b17d1778bc7e8756447217a2454c66dc45b6dfe0a441b90c21"
+    }
+  },
+  "protocol": {
+    "split_id": "v1",
+    "fold_rows": {
+      "train": 24712,
+      "validation": 8238,
+      "test": 8238
+    },
+    "seed": 42,
+    "positive_label": "yes",
+    "selection_fold": "validation",
+    "test_labels_used_by_B": false,
+    "rank_rule": "risk descending; row_id ascending",
+    "validation_budget_fraction": 0.3,
+    "model_order": [
+      "no_skill",
+      "poutcome_success",
+      "logistic",
+      "logistic_macro_control",
+      "decision_tree",
+      "random_forest",
+      "logistic_duration_ablation"
+    ],
+    "feature_sets": {
+      "main": [
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "day_of_week",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome"
+      ],
+      "macro_control": [
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "day_of_week",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "emp.var.rate",
+        "cons.price.idx",
+        "cons.conf.idx",
+        "euribor3m",
+        "nr.employed"
+      ],
+      "duration_ablation": [
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "day_of_week",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "duration"
+      ]
+    }
+  },
+  "selected_parameters": {
+    "logistic": {
+      "C": 100.0
+    },
+    "logistic_macro_control": {
+      "C": 0.1
+    },
+    "decision_tree": {
+      "max_depth": 8,
+      "min_samples_leaf": 100
+    },
+    "random_forest": {
+      "max_depth": 10,
+      "min_samples_leaf": 50
+    },
+    "logistic_duration_ablation": {
+      "C": 100.0
+    }
+  },
+  "output_fingerprints": {
+    "scores.csv": {
+      "path": "local_review/B01_candidate/outputs/scores.csv",
+      "bytes": 4817858,
+      "sha256": "deea4065800bf495a4a39f712fcbcda0347bc04e4de2f370d22d12e544a44cad",
+      "lf_normalized_sha256": "92865505e925cd6c7f1990fb3ecb174c77dae06e44bc8498ccec210201fd8369"
+    },
+    "T2_模型对比表.csv": {
+      "path": "local_review/B01_candidate/outputs/T2_模型对比表.csv",
+      "bytes": 954,
+      "sha256": "8a020b6ab5f5654c6ed7b8c67f23cc9ac8f968fd8e973dbf9717bdf7f2884c84",
+      "lf_normalized_sha256": "0ecb9cbe4990c55ca9c7e709c17e04599b1461c5943ebda41e1a733b72a72ae0"
+    },
+    "T2_模型对比表.md": {
+      "path": "local_review/B01_candidate/outputs/T2_模型对比表.md",
+      "bytes": 2518,
+      "sha256": "aeddeeb23277c5d21d144801de3974ba120fcb788e84ca8c244ec3f529705e8d",
+      "lf_normalized_sha256": "8544dc93976dfd5024dc33ce279c5d9eff5fd72f38b690f8dcaf3ef0bbbfc677"
+    },
+    "model_selection_pool.csv": {
+      "path": "local_review/B01_candidate/outputs/model_selection_pool.csv",
+      "bytes": 6113,
+      "sha256": "c4b9f8a66c2b0b704b284084b09200874a90eb4c9e3bcc68b01b8ee46062d4ed",
+      "lf_normalized_sha256": "2e0970d7e0c7ec92f8578e2e8c0af2e7f89186680ffc64a4c8522316e8495bda"
+    },
+    "logistic_coefficients.csv": {
+      "path": "local_review/B01_candidate/outputs/logistic_coefficients.csv",
+      "bytes": 2758,
+      "sha256": "c1c73418cdd82139b7c480f374801caaab4f6699d7c32d7b2ea01cc004802d36",
+      "lf_normalized_sha256": "16971a206beebdeb519bba9784c01dcad51aad46a503ef4afaf3708566f8d677"
+    },
+    "B_legacy_comparison.json": {
+      "path": "local_review/B01_candidate/outputs/B_legacy_comparison.json",
+      "bytes": 268,
+      "sha256": "2416e70618ce82a653fd1ea752cb7f7e12a62421dd79e0663ce5d4c251852652",
+      "lf_normalized_sha256": "e63f4aa541b33f4fe1587478fbd7f979840a615cb2b8e4449fcd5eed4c5d4dba"
+    }
+  },
+  "legacy_comparison_status": "reference_not_available",
+  "historical_exact_retraining_reproduction": "not_established_from_available_github_environment_information",
+  "original_frozen_scores_replaced": false
+}

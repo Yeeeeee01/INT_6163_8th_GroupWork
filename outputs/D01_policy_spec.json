@@ -1,0 +1,21 @@
+{
+  "policy": {
+    "policy_id": "D01_previous3_last_failure_v1",
+    "previous_minimum": 3,
+    "poutcome_equals": "failure",
+    "trigger_expression": "previous >= 3 and poutcome == failure",
+    "primary_scenario": "hold_no_refill",
+    "secondary_scenario": "hold_with_refill",
+    "budget_fraction": 0.3,
+    "ranking_rule": "risk descending, row_id ascending",
+    "review_action": "hold from automatic call list and send to human review",
+    "replay_review_assumption": "no human override or release in either scenario",
+    "threshold_basis": "illustrative assignment assumption: at least three prior contacts; not a bank-confirmed cap or outcome-optimized threshold",
+    "selection_method": "one rule fixed before this supplementary calculation; no threshold search or choice of better Test scenario",
+    "test_status": "post-hoc descriptive replay; Test results were already examined in C01",
+    "unit": "record-level gate using prior-contact count and last campaign result; no customer identifier",
+    "semantic_limit": "previous counts prior contacts, not confirmed failed contacts; poutcome describes the last campaign only",
+    "sensitive_fields_in_gate": []
+  },
+  "policy_sha256": "5a29855c7aefe65c8561115ccdd78c03173429aaf8e220a6c959ed9789a3492f"
+}

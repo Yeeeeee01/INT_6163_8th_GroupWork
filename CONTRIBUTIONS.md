@@ -1,8 +1,6 @@
 # 成员贡献与文件—图表对应
 
-本表依据`INT6163_第8组_小组分工.docx`和`report.docx`第7页整理，按“文件→负责人→支撑图表/章节”记录分工。
-
-`Z:`表示`results/ABCD_verified.zip`解压根目录，包内路径保留已验收阶段结构。
+依据`INT6163_第8组_小组分工.docx`及[report.docx](report.docx)第7页，按“文件→负责人→图表或章节”记录。姓名沿用报告，学号保留在报告中；下表登记分工，不替代成员对实际贡献的确认。
 
 ## 报告已确认的职责
 
@@ -18,23 +16,20 @@
 
 | 文件或结果位置 | 负责部分 | 支撑内容 |
 |---|---|---|
-| `01_data_quality.py`、`01_data_quality.ipynb` | A | 数据质量、字段用途、来源、按行序切分；F1/F1b/F2与T1 |
-| `Z:workspace/data/README_data.md`、`Z:workspace/outputs/data_dictionary.csv`、`split_v1.csv`、`T1_数据质量表.md`、`A_summary.json` | A | 数据说明、21列字典、固定切分与质量证据 |
-| `Z:workspace/figures/`三张PNG | A | F1字段分界、F1b行序变化、F2数据血缘 |
-| `02_models.py`、`configs/features.yaml` | B | Train拟合、Validation选参、主特征与duration消融方案 |
-| `Z:workspace/local_review/B01_candidate/outputs/`的`scores.csv`、`T2_模型对比表.csv`/`.md`、`model_selection_pool.csv`、`logistic_coefficients.csv` | B | 统一模型分数、T2、参数选择与系数解释；为C的F3/F4提供输入 |
-| `03_eval.py`、`03_eval.ipynb`、`c01_support.py` | C | 固定Test评价、AP/TopK/混淆矩阵、三项业务量及数字登记 |
-| `Z:workspace/local_review/C01_candidate/outputs/`及`figures/` | C | 原C指标、Test比较、T3切片、T4消融、阶段T5、F3/F4 |
-| `scripts/d01_contact_policy.py`及`Z:workspace/local_review/D01_candidate/outputs/` | D | 固定联系限制事后回放、T6、逐记录审计及额外漏报来源 |
-| `scripts/d02_report_assets.py`及`Z:workspace/local_review/D02_candidate/outputs/` | D | F5两格式、报告章节—图表—数字对应表及素材索引 |
-| `report.docx` | D | 六章报告，整合F1/F1b/F2/F3/F4/F5、科学表、参考资料、GenAI和成员贡献 |
-| `README.md`、`README_D.md`、`CONTRIBUTIONS.md` | D（材料整合） | 执行顺序、依赖、文件分类、引用/素材来源及贡献对应 |
-| `scripts/reproduce_abc.py`、`scripts/reproduce_all.py`、`scripts/result_bundle.py`、`.gitattributes`、`.gitignore` | D（复现与发布整合）；A/B/C保留各自科学职责 | 无缓存完整入口、Git输入保护、同次结果归档及报告证据检查 |
-| `docs/ABC_FIX_GUIDE.md`、`docs/REPORT_EVIDENCE.json`、`results/ABCD_verified.zip` | D（整合），ABC与D原产物保持原分工 | 46点修订说明、107数字/图像来源、统一正式数字源和T5报告页码 |
-| `slides.pptx`及实际PPT页码 | E | 原定汇报与转录核对职责；本轮暂缓，不包含在当前20文件上传目录 |
+| [01_data_quality.py](01_data_quality.py)、[Notebook](01_data_quality.ipynb) | A | 来源、字段、质量与原行序切分；T1、F1/F1b/F2 |
+| [数据说明](data/README_data.md)、[字典](outputs/data_dictionary.csv)、[切分](outputs/split_v1.csv)、[T1](outputs/T1_数据质量表.md)、[A统计](outputs/A_summary.json) | A | 21列用途、数据质量、24712/8238/8238分段 |
+| [F1](figures/F1_通话前后字段分界图.png)、[F1b](figures/F1b_时间漂移证据.png)、[F2](figures/F2_数据血缘图.png) | A | 字段分界、原行序变化、数据血缘 |
+| [02_models.py](02_models.py)、[特征配置](configs/features.yaml)、[分数](outputs/scores.csv)、[T2](outputs/T2_模型对比表.md)、[选参池](outputs/model_selection_pool.csv)、[系数](outputs/logistic_coefficients.csv) | B | Train拟合、Validation选参、主模型与消融输入 |
+| [03_eval.py](03_eval.py)、[Notebook](03_eval.ipynb)、[c01_support.py](c01_support.py)、[Test模型表](outputs/C_测试集模型比较表.md)、[T3](outputs/T3_误差切片表.md)、[T4](outputs/T4_duration消融表.md) | C | Test AP/TopK、混淆矩阵、切片、duration消融 |
+| [F3](figures/F3_PR曲线.png)、[F4](figures/F4_预算收益曲线.png) | C | PR与预算收益，含低预算时规则优于主模型的结果 |
+| [D01脚本](scripts/d01_contact_policy.py)、[固定规则](outputs/D01_policy_spec.json)、[T6](outputs/T6_联系限制补充评价.md)、[逐记录审计](outputs/D01_逐记录审计.csv) | D | 联系限制事后回放、不递补与递补对照、额外漏报 |
+| [D02脚本](scripts/d02_report_assets.py)、[F5 PNG](outputs/F5_行动闭环.png)、[F5 SVG](outputs/F5_行动闭环.svg)、[章节对应表](outputs/章节_图表_数字对应表.md) | D | 建议行动流程及报告证据对应 |
+| [report.docx](report.docx) | D | 六章、六图、科学表、引用、GenAI及成员贡献 |
+| [README.md](README.md)、[README_D.md](README_D.md)、本表 | D（材料整合） | 全项目执行顺序、46项修复、文件用途及来源 |
+| [ABC入口](scripts/reproduce_abc.py)、[完整入口](scripts/reproduce_all.py)、[发布模块](scripts/result_bundle.py)、[证据登记](docs/REPORT_EVIDENCE.json)、[发布清单](outputs/publication_manifest.json) | D（复现与整合）；A/B/C保留各自科学职责 | 从原CSV完整执行、同次结果配对、107数字核对及直接目录展示 |
+| [统一指标](outputs/metrics.json)、[T5](outputs/T5_数字核对表.md)、[数字索引](outputs/T5_all_numbers.csv) | C原指标；D补充回放与报告整合 | 原C键值保留，D01与文档登记追加；报告实际页码 |
+| `slides.pptx`及实际PPT页码 | E | 原定PPT、转录核对及问答职责；是否完成以实际材料为准 |
 
-## 使用与核验说明
+## 使用说明
 
-报告、科学结果及全部科学实现本轮保持原字节；旧18文件发布目录也完整保留。当前准备区只为README和共享指南增加导航，并补充两份文档。ABC与D补充分析的技术验收、原Git加发布文件的完整重建均已有用户成功重跑记录；报告也已获用户通过。当前新增文档只整理已确认职责及文件映射，不新增分析结果或成员身份信息。
-
-代码修复、核验、写作与材料整理使用AI的范围，以报告第7页实际GenAI声明为准，工具为Codex，模型按用户确认记录为GPT-6.1 Sol。报告源文件与验收原始记录在本地保留。当前未推送GitHub，目标分支为`report`。
+各文件均可直接查看，无需解压分析结果包。修复后源码在原路径替代main版本，具体前后区别见[README_D](README_D.md#abc-repairs)。科学模型分工与材料整合职责分别登记，不把代码修复等同于重新分配组员原有工作。AI使用范围以报告第7页为准：工具Codex，模型按用户确认记录为GPT-6.1 Sol。

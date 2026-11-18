@@ -266,7 +266,9 @@ def write_evidence(index,out):
     lines += ['', '## 图表实际来源','', 'F5：[SVG](F5_行动闭环.svg) / [PNG](F5_行动闭环.png)。','',
               # [D04_02-02 原包名链接保留]
               # 'ABC图表见[P01同次结果包](../../../results/ABC_C01_verified.zip)，按下表ZIP内部路径查看；不引用根目录旧outputs/figures。若输入来自新ABC运行，则使用表中本次工作区文件。','', '| 图表 | 实际文件或ZIP成员 |','|---|---|']
-              'ABC与D结果见[同次统一结果包](../../../results/ABCD_verified.zip)；正式引用以包内report目录为准，原阶段路径由snapshot.json映射。若输入来自新ABC运行，素材来自本次工作区文件。','', '| 图表 | 实际文件或ZIP成员 |','|---|---|']
+              # [D05-10 原行保留]
+              # 'ABC与D结果见[同次统一结果包](../../../results/ABCD_verified.zip)；正式引用以包内report目录为准，原阶段路径由snapshot.json映射。若输入来自新ABC运行，素材来自本次工作区文件。','', '| 图表 | 实际文件或ZIP成员 |','|---|---|']
+              '本表记录阶段素材；正式报告对应表与F5由统一入口直接发布到publication/outputs/，仓库的outputs/为本次正式展示目录。','', '| 图表 | 实际阶段来源 |','|---|---|']
     for name,artifact in index['artifacts'].items():
         location=artifact.get('member',artifact.get('path',artifact.get('metrics_section','')))
         lines.append(f'| {name} | `{location}` |')

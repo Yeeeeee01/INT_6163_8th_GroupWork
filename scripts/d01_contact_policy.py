@@ -86,6 +86,13 @@ def load_bundle(snapshot=None,abc_run=None):
             'local_review/B01_candidate/outputs/B_run_manifest.json',
             'local_review/C01_candidate/outputs/metrics.json',
             'local_review/C01_candidate/outputs/C_run_manifest.json']
+    # [D05-08 默认使用新运行的ABC；不再要求仓库结果ZIP]
+    if snapshot is None and abc_run is None:
+        marker=ROOT/'runs/latest_run.txt'
+        if not marker.is_file():raise ValueError('请先运行python scripts/reproduce_all.py，或用--abc-run指定已完成的同次ABC目录')
+        relative=Path(marker.read_text(encoding='utf-8').strip())
+        abc_run=(ROOT/relative/'abc').resolve()
+        if ROOT not in abc_run.parents:raise ValueError('ABC目录必须在本项目内')
     watched={}
     def disk(path):
         payload=path.read_bytes();watched[path]=fingerprint_bytes(payload);return payload
@@ -110,7 +117,9 @@ def load_bundle(snapshot=None,abc_run=None):
     else:
         # [D04_02-01 原默认快照路径保留]
         # snapshot=Path(snapshot or ROOT/'results/ABC_C01_verified.zip').resolve()
-        snapshot=Path(snapshot or ROOT/'results/ABCD_verified.zip').resolve()
+        # [D05-09 原行保留]
+        # snapshot=Path(snapshot or ROOT/'results/ABCD_verified.zip').resolve()
+        snapshot=Path(snapshot).resolve()
         if ROOT not in snapshot.parents:raise ValueError('快照必须位于本项目内')
         payload=disk(snapshot)
         with zipfile.ZipFile(BytesIO(payload)) as archive:

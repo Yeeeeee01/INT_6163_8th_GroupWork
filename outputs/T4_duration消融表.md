@@ -1,12 +1,14 @@
-# T4 duration 泄漏消融表
+<!-- C01_ORIGINAL_MARKDOWN_BEGIN
+本次新生成，无被替换旧稿。
+C01_ORIGINAL_MARKDOWN_END -->
 
-> 主模型与消融模型只差 `duration`。消融模型仅用于量化泄漏，不得作为最终模型。
+# T4 duration消融
 
-| 数据段 | 不含 duration PR-AUC | 不含 duration 命中数 | 含 duration PR-AUC | 含 duration 命中数 | PR-AUC 绝对差 | 命中数绝对差 | PR-AUC 相对膨胀 |
+主模型与消融只差duration；不可用于通话前决策的字段不作为主模型输入。
+
+| 数据段 | 主模型AP | 主模型命中 | 含duration AP | 含duration命中 | AP绝对差 | 命中差 | AP相对差 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Validation | 0.208120 | 488 | 0.388501 | 678 | +0.180381 | +190 | +86.67% |
-| Test | 0.448276 | 1200 | 0.536352 | 1434 | +0.088076 | +234 | +19.65% |
+| Validation | 0.208115 | 488 | 0.388499 | 678 | +0.180384 | +190 | +86.68% |
+| Test | 0.448274 | 1200 | 0.536352 | 1434 | +0.088078 | +234 | +19.65% |
 
-结论：加入 `duration` 后指标明显变好，但这不表示模型更有业务价值，而是因为该字段在电话结束后才可得。UCI 官方说明原文："should be discarded if the intention is to have a realistic predictive model"。
-
-因此，最终模型必须使用不含 `duration` 的 `logistic`；含 `duration` 版本只保留为泄漏证据。
+UCI说明："should be discarded if the intention is to have a realistic predictive model"。

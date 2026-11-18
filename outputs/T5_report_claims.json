@@ -1,0 +1,1184 @@
+{
+  "report_sha256": "b2e922ea9957cf94426ead67e4608a2c4fe478b126b6fed02337915fdcf0b5e3",
+  "page_count": 8,
+  "claims": [
+    {
+      "element_id": "s2p1",
+      "key": "data.n_rows",
+      "raw_value": 41188,
+      "format": "n",
+      "display": "41,188",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p1",
+      "key": "data.n_columns",
+      "raw_value": 21,
+      "format": "int",
+      "display": "21",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p1",
+      "key": "data.n_positive",
+      "raw_value": 4640,
+      "format": "n",
+      "display": "4,640",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p1",
+      "key": "data.positive_rate",
+      "raw_value": 0.112654,
+      "format": "p2",
+      "display": "11.27%",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p2",
+      "key": "data.n_nan_cells",
+      "raw_value": 0,
+      "format": "int",
+      "display": "0",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p2",
+      "key": "data.n_duplicated_rows",
+      "raw_value": 12,
+      "format": "int",
+      "display": "12",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s2p2",
+      "key": "data.n_pdays_999",
+      "raw_value": 39673,
+      "format": "n",
+      "display": "39,673",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "data.n_train",
+      "raw_value": 24712,
+      "format": "n",
+      "display": "24,712",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "data.n_validation",
+      "raw_value": 8238,
+      "format": "n",
+      "display": "8,238",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "data.n_test",
+      "raw_value": 8238,
+      "format": "n",
+      "display": "8,238",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "protocol.test_row_id_min",
+      "raw_value": 32950,
+      "format": "int",
+      "display": "32950",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "protocol.test_row_id_max",
+      "raw_value": 41187,
+      "format": "int",
+      "display": "41187",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p1",
+      "key": "data.main_feature_count",
+      "raw_value": 14,
+      "format": "int",
+      "display": "14",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p2",
+      "key": "model_selection.seed",
+      "raw_value": 42,
+      "format": "int",
+      "display": "42",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "validation.models.2.validation_pr_auc",
+      "raw_value": 0.208115,
+      "format": "ap",
+      "display": "0.208115",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "validation.models.4.validation_pr_auc",
+      "raw_value": 0.1252,
+      "format": "ap",
+      "display": "0.125200",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "validation.models.5.validation_pr_auc",
+      "raw_value": 0.123401,
+      "format": "ap",
+      "display": "0.123401",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "validation.models.3.validation_pr_auc",
+      "raw_value": 0.098906,
+      "format": "ap",
+      "display": "0.098906",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "model_selection.selected_parameters.logistic.C",
+      "raw_value": 100.0,
+      "format": "int",
+      "display": "100",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "model_selection.selected_parameters.decision_tree.max_depth",
+      "raw_value": 8,
+      "format": "int",
+      "display": "8",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "model_selection.selected_parameters.decision_tree.min_samples_leaf",
+      "raw_value": 100,
+      "format": "int",
+      "display": "100",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "model_selection.selected_parameters.random_forest.max_depth",
+      "raw_value": 10,
+      "format": "int",
+      "display": "10",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p3",
+      "key": "model_selection.selected_parameters.random_forest.min_samples_leaf",
+      "raw_value": 50,
+      "format": "int",
+      "display": "50",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p4",
+      "key": "coefficients.records.41.coefficient_log_odds",
+      "raw_value": -0.09990501,
+      "format": "coef",
+      "display": "-0.100",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s3p4",
+      "key": "coefficients.records.43.coefficient_log_odds",
+      "raw_value": -0.06656405,
+      "format": "coef",
+      "display": "-0.067",
+      "report_pages": [
+        3
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "protocol.test_positive_rows",
+      "raw_value": 2540,
+      "format": "n",
+      "display": "2,540",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "protocol.work_fraction",
+      "raw_value": 0.3,
+      "format": "p0",
+      "display": "30%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "protocol.k_at_30pct",
+      "raw_value": 2472,
+      "format": "n",
+      "display": "2,472",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.pr_auc",
+      "raw_value": 0.44827396573339506,
+      "format": "ap",
+      "display": "0.448274",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.precision_at_k",
+      "raw_value": 0.4854368932038835,
+      "format": "p2",
+      "display": "48.54%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.recall_at_k",
+      "raw_value": 0.47244094488188976,
+      "format": "p2",
+      "display": "47.24%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.confusion_at_budget.tp",
+      "raw_value": 1200,
+      "format": "n",
+      "display": "1,200",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.confusion_at_budget.fp",
+      "raw_value": 1272,
+      "format": "n",
+      "display": "1,272",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.confusion_at_budget.fn",
+      "raw_value": 1340,
+      "format": "n",
+      "display": "1,340",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p1",
+      "key": "models.logistic.confusion_at_budget.tn",
+      "raw_value": 4426,
+      "format": "n",
+      "display": "4,426",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p2",
+      "key": "business.extra_hits_vs_rule",
+      "raw_value": 276,
+      "format": "int",
+      "display": "276",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p2",
+      "key": "business.invalid_calls_avoided_vs_rule",
+      "raw_value": 276,
+      "format": "int",
+      "display": "276",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p2",
+      "key": "business.missed_subscriptions_at_k",
+      "raw_value": 1340,
+      "format": "n",
+      "display": "1,340",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p3",
+      "key": "ablation.test_pr_auc_with_duration",
+      "raw_value": 0.5363519371863723,
+      "format": "ap",
+      "display": "0.536352",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p3",
+      "key": "ablation.test_pr_auc_absolute_difference",
+      "raw_value": 0.08807797145297724,
+      "format": "ap",
+      "display": "0.088078",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p3",
+      "key": "ablation.test_hits_absolute_difference",
+      "raw_value": 234,
+      "format": "int",
+      "display": "234",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p4",
+      "key": "error_slices.rows",
+      "raw_value": 21,
+      "format": "int",
+      "display": "21",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p4",
+      "key": "error_slices.records.0.positives",
+      "raw_value": 480,
+      "format": "int",
+      "display": "480",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p4",
+      "key": "error_slices.records.0.fn",
+      "raw_value": 411,
+      "format": "int",
+      "display": "411",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p4",
+      "key": "error_slices.records.16.sample_n",
+      "raw_value": 64,
+      "format": "int",
+      "display": "64",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.0.row_id",
+      "raw_value": 36501,
+      "format": "int",
+      "display": "36501",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.1.row_id",
+      "raw_value": 36526,
+      "format": "int",
+      "display": "36526",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.0.risk",
+      "raw_value": 0.064468,
+      "format": "ap",
+      "display": "0.064468",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.1.risk",
+      "raw_value": 0.064467,
+      "format": "ap",
+      "display": "0.064467",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "models.logistic.threshold_at_kth_risk",
+      "raw_value": 0.06447742994,
+      "format": "ap",
+      "display": "0.064477",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.0.previous",
+      "raw_value": 0,
+      "format": "int",
+      "display": "0",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.0.campaign",
+      "raw_value": 1,
+      "format": "int",
+      "display": "1",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.2.row_id",
+      "raw_value": 40857,
+      "format": "int",
+      "display": "40857",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p5",
+      "key": "failure_cases.2.risk",
+      "raw_value": 0.952627,
+      "format": "ap",
+      "display": "0.952627",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p6",
+      "key": "sensitivity.records.0.contact_fraction",
+      "raw_value": 0.1,
+      "format": "p0",
+      "display": "10%",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p6",
+      "key": "sensitivity.records.10.hits",
+      "raw_value": 536,
+      "format": "int",
+      "display": "536",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s4p6",
+      "key": "sensitivity.records.0.hits",
+      "raw_value": 417,
+      "format": "int",
+      "display": "417",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p1",
+      "key": "contact_policy.policy.previous_minimum",
+      "raw_value": 3,
+      "format": "int",
+      "display": "3",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.triggered_records",
+      "raw_value": 120,
+      "format": "int",
+      "display": "120",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.triggered_positive_total",
+      "raw_value": 42,
+      "format": "int",
+      "display": "42",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.triggered_original_selected",
+      "raw_value": 17,
+      "format": "int",
+      "display": "17",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.triggered_original_selected_positive",
+      "raw_value": 3,
+      "format": "int",
+      "display": "3",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.hold_no_refill.contacts",
+      "raw_value": 2455,
+      "format": "n",
+      "display": "2,455",
+      "report_pages": [
+        5
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.hold_no_refill.hits",
+      "raw_value": 1197,
+      "format": "n",
+      "display": "1,197",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.hold_no_refill.net_invalid_calls_avoided",
+      "raw_value": 14,
+      "format": "int",
+      "display": "14",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.hold_no_refill.net_extra_missed_vs_baseline",
+      "raw_value": 3,
+      "format": "int",
+      "display": "3",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p2",
+      "key": "contact_policy.folds.test.hold_no_refill.missed_subscriptions",
+      "raw_value": 1343,
+      "format": "n",
+      "display": "1,343",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p3",
+      "key": "contact_policy.folds.test.hold_with_refill.replacement_contacts",
+      "raw_value": 17,
+      "format": "int",
+      "display": "17",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p3",
+      "key": "contact_policy.folds.test.hold_with_refill.replacement_hits",
+      "raw_value": 11,
+      "format": "int",
+      "display": "11",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p3",
+      "key": "contact_policy.folds.test.hold_with_refill.hits",
+      "raw_value": 1208,
+      "format": "n",
+      "display": "1,208",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p3",
+      "key": "contact_policy.folds.test.hold_with_refill.net_hits_change_vs_baseline",
+      "raw_value": 8,
+      "format": "signed",
+      "display": "+8",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s5p3",
+      "key": "contact_policy.folds.validation.triggered_records",
+      "raw_value": 2,
+      "format": "int",
+      "display": "2",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s6p2",
+      "key": "data.positive_rate_by_fold.train",
+      "raw_value": 0.048074,
+      "format": "p2",
+      "display": "4.81%",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s6p2",
+      "key": "data.positive_rate_by_fold.validation",
+      "raw_value": 0.110706,
+      "format": "p2",
+      "display": "11.07%",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "s6p2",
+      "key": "data.positive_rate_by_fold.test",
+      "raw_value": 0.308327,
+      "format": "p2",
+      "display": "30.83%",
+      "report_pages": [
+        6
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.job",
+      "raw_value": 330,
+      "format": "n",
+      "display": "330",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.marital",
+      "raw_value": 80,
+      "format": "n",
+      "display": "80",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.education",
+      "raw_value": 1731,
+      "format": "n",
+      "display": "1,731",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.default",
+      "raw_value": 8597,
+      "format": "n",
+      "display": "8,597",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.housing",
+      "raw_value": 990,
+      "format": "n",
+      "display": "990",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "quality_table",
+      "key": "data.unknown_count_by_column.loan",
+      "raw_value": 990,
+      "format": "n",
+      "display": "990",
+      "report_pages": [
+        2
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.no_skill.pr_auc",
+      "raw_value": 0.3083272638990046,
+      "format": "ap",
+      "display": "0.308327",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.no_skill.hits_at_k",
+      "raw_value": 210,
+      "format": "n",
+      "display": "210",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.poutcome_success.pr_auc",
+      "raw_value": 0.43307518191070526,
+      "format": "ap",
+      "display": "0.433075",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.poutcome_success.hits_at_k",
+      "raw_value": 924,
+      "format": "n",
+      "display": "924",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic.pr_auc",
+      "raw_value": 0.44827396573339506,
+      "format": "ap",
+      "display": "0.448274",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic.hits_at_k",
+      "raw_value": 1200,
+      "format": "n",
+      "display": "1,200",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic_macro_control.pr_auc",
+      "raw_value": 0.33882346045795375,
+      "format": "ap",
+      "display": "0.338823",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic_macro_control.hits_at_k",
+      "raw_value": 921,
+      "format": "n",
+      "display": "921",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.decision_tree.pr_auc",
+      "raw_value": 0.43957494205651143,
+      "format": "ap",
+      "display": "0.439575",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.decision_tree.hits_at_k",
+      "raw_value": 1161,
+      "format": "n",
+      "display": "1,161",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.random_forest.pr_auc",
+      "raw_value": 0.40376747401272917,
+      "format": "ap",
+      "display": "0.403767",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.random_forest.hits_at_k",
+      "raw_value": 1051,
+      "format": "n",
+      "display": "1,051",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic_duration_ablation.pr_auc",
+      "raw_value": 0.5363519371863723,
+      "format": "ap",
+      "display": "0.536352",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "models_table",
+      "key": "models.logistic_duration_ablation.hits_at_k",
+      "raw_value": 1434,
+      "format": "n",
+      "display": "1,434",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.0.sample_n",
+      "raw_value": 2145,
+      "format": "n",
+      "display": "2,145",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.0.recall",
+      "raw_value": 0.14375,
+      "format": "p2",
+      "display": "14.38%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.0.false_positive_rate",
+      "raw_value": 0.09009009009009009,
+      "format": "p2",
+      "display": "9.01%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.3.sample_n",
+      "raw_value": 7245,
+      "format": "n",
+      "display": "7,245",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.3.recall",
+      "raw_value": 0.47384219554030876,
+      "format": "p2",
+      "display": "47.38%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.3.false_positive_rate",
+      "raw_value": 0.22084266232444535,
+      "format": "p2",
+      "display": "22.08%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.6.sample_n",
+      "raw_value": 1295,
+      "format": "n",
+      "display": "1,295",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.6.recall",
+      "raw_value": 0.3148148148148148,
+      "format": "p2",
+      "display": "31.48%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.6.false_positive_rate",
+      "raw_value": 0.08526413345690455,
+      "format": "p2",
+      "display": "8.53%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.19.sample_n",
+      "raw_value": 963,
+      "format": "n",
+      "display": "963",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.19.recall",
+      "raw_value": 0.29743589743589743,
+      "format": "p2",
+      "display": "29.74%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    },
+    {
+      "element_id": "slices_table",
+      "key": "error_slices.records.19.false_positive_rate",
+      "raw_value": 0.12760416666666666,
+      "format": "p2",
+      "display": "12.76%",
+      "report_pages": [
+        4
+      ],
+      "ppt_pages": null
+    }
+  ],
+  "PPT_status": "not registered"
+}

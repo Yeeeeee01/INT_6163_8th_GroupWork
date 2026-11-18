@@ -1,5 +1,5 @@
 {
-  "schema": "D04-02-evidence",
+  "schema": "D05-direct-files-1.0",
   "report": {
     "filename": "report.docx",
     "sha256": "b2e922ea9957cf94426ead67e4608a2c4fe478b126b6fed02337915fdcf0b5e3",
@@ -24,32 +24,110 @@
     },
     "page_registration_basis": "Physical pages from previously rendered and user-technically-accepted report; immutable DOCX SHA256 binds this registration. Public analysis does not paginate Word.",
     "ppt_pages_status": "Actual PPT not registered; no slide pages invented.",
-    "page_registration_sha256": "3a242bb6d8f645da3d564e1e376abdd6c73d84efd605b8716bfeb7be38e4557c"
+    "page_registration_sha256": "3a242bb6d8f645da3d564e1e376abdd6c73d84efd605b8716bfeb7be38e4557c",
+    "chapters": [
+      {
+        "title": "一 问题与目标",
+        "embedded": [
+          "图1 通话前后的字段边界"
+        ],
+        "files": [
+          "figures/F1_通话前后字段分界图.png",
+          "outputs/metrics.json"
+        ]
+      },
+      {
+        "title": "二 数据与质量",
+        "embedded": [
+          "表1 unknown标记的分列计数",
+          "图2 数据来源与处理血缘",
+          "图3 原行序分组订阅率"
+        ],
+        "files": [
+          "data/README_data.md",
+          "outputs/T1_数据质量表.md",
+          "outputs/data_dictionary.csv",
+          "outputs/split_v1.csv",
+          "figures/F2_数据血缘图.png",
+          "figures/F1b_时间漂移证据.png"
+        ]
+      },
+      {
+        "title": "三 方法与基线",
+        "embedded": [],
+        "files": [
+          "02_models.py",
+          "configs/features.yaml",
+          "outputs/T2_模型对比表.csv",
+          "outputs/model_selection_pool.csv",
+          "outputs/logistic_coefficients.csv"
+        ]
+      },
+      {
+        "title": "四 实验评价与结果",
+        "embedded": [
+          "表2 测试集同预算模型比较",
+          "表3 四维误差切片示例",
+          "图4 测试集精确率与召回率曲线",
+          "图5 联系预算与命中订阅数"
+        ],
+        "files": [
+          "outputs/C_测试集模型比较表.md",
+          "outputs/T3_误差切片表.md",
+          "outputs/T4_duration消融表.md",
+          "figures/F3_PR曲线.png",
+          "figures/F4_预算收益曲线.png",
+          "outputs/T5_数字核对表.md"
+        ]
+      },
+      {
+        "title": "五 行动与责任",
+        "embedded": [
+          "图6 名单使用与责任闭环"
+        ],
+        "files": [
+          "outputs/F5_行动闭环.png",
+          "outputs/F5_行动闭环.svg",
+          "outputs/T6_联系限制补充评价.md",
+          "outputs/D01_policy_spec.json",
+          "outputs/D01_逐记录审计.csv"
+        ]
+      },
+      {
+        "title": "六 限制与结论",
+        "embedded": [],
+        "files": [
+          "data/raw/bank-additional-names.txt",
+          "outputs/metrics.json",
+          "figures/F1b_时间漂移证据.png"
+        ]
+      }
+    ]
   },
   "source_inputs": {
     "01_data_quality.py": {
-      "bytes": 49180,
-      "sha256": "979d816db725751fba3fafe2a1bc6a8ad378fadbeb02814baa37318d5849d0a6",
+      "bytes": 48367,
+      "sha256": "18029b179dd17dacbffd5581935fecb3ea98098749c9b5c8fa0eb81bad5474a4",
       "lf_normalized_sha256": "18029b179dd17dacbffd5581935fecb3ea98098749c9b5c8fa0eb81bad5474a4"
     },
     "01_data_quality.ipynb": {
-      "bytes": 40855,
-      "sha256": "dac07719b891b531eb35233b27c29bdb2d402492cfb786cd97e85d0865bf49fb",
+      "bytes": 40141,
+      "sha256": "6b91ff60c6b5e1ded0f364b33d57b1b9189063b7fae48c60b0eadd3ed54bc39d",
       "lf_normalized_sha256": "6b91ff60c6b5e1ded0f364b33d57b1b9189063b7fae48c60b0eadd3ed54bc39d"
     },
     "02_models.py": {
-      "bytes": 33854,
-      "sha256": "bcc04ffb9bf3e07237814e8a11a6268ae956667d6597a67ee7bcf51a9792b6cf",
+      "bytes": 33147,
+      "sha256": "b5cf1b91c63fd8b17d1778bc7e8756447217a2454c66dc45b6dfe0a441b90c21",
       "lf_normalized_sha256": "b5cf1b91c63fd8b17d1778bc7e8756447217a2454c66dc45b6dfe0a441b90c21"
     },
     "03_eval.py": {
-      "bytes": 41907,
-      "sha256": "594be4c510bebb37aa738ffe0474e66c5d6799f875fee44305bd8ff59570a905",
+      "bytes": 40956,
+      "sha256": "93c76c8af997760ce48644177c6c012a892c5a11eaf8ef47e8206a8a8fcc8819",
       "lf_normalized_sha256": "93c76c8af997760ce48644177c6c012a892c5a11eaf8ef47e8206a8a8fcc8819"
     },
     "03_eval.ipynb": {
-      "bytes": 4454,
-      "sha256": "a22034627fd6f156626ae60a0da2fdae37e8a839f48960c7f34fcd8d31c678c5",
+      "bytes": 4342,
+      "sha256": "ff6ca60bbb3f8da59f56b3a4006dc6f3d54cd1ecc76b7fa19097155647394d02",
       "lf_normalized_sha256": "ff6ca60bbb3f8da59f56b3a4006dc6f3d54cd1ecc76b7fa19097155647394d02"
     },
     "c01_support.py": {
@@ -58,23 +136,23 @@
       "lf_normalized_sha256": "2cac64bf75439133db3b6ba97b5c78377788652cabc17bb95a89994b0f27ce46"
     },
     "requirements.txt": {
-      "bytes": 70,
-      "sha256": "ecaa850768d1da239636ac680b8deb0ecc7cb2dd07520f2f51f665f78647e401",
+      "bytes": 66,
+      "sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f",
       "lf_normalized_sha256": "d0de5273259b4ba63cfd0ad9aa260a78ed80fbc0acc2e10f7d895de560695d1f"
     },
     "configs/features.yaml": {
-      "bytes": 919,
-      "sha256": "7a43ec3161b9730ceca5985e8a238a4409708d2159f86377660f781ffd353f43",
+      "bytes": 856,
+      "sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd",
       "lf_normalized_sha256": "09fd5282d67dd90331b243ee2128addb88936f9bbc4882d68897968fe33457bd"
     },
     "data/raw/bank-additional-full.csv": {
-      "bytes": 5834924,
-      "sha256": "74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8",
+      "bytes": 5793735,
+      "sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df",
       "lf_normalized_sha256": "233e260d5d1d506a2c10381da5b8c2f75f2c08d1b373ca7b825e39ebe1bd30df"
     },
     "data/raw/bank-additional-names.txt": {
-      "bytes": 5458,
-      "sha256": "10045462a4c026f858dffa159370c4270510230c1fc63c6c91ca51bba4b3df26",
+      "bytes": 5386,
+      "sha256": "304166dfdcf01aa2fe6c954152e64c26714c1446d25a85c8d40bc11edd438bc5",
       "lf_normalized_sha256": "304166dfdcf01aa2fe6c954152e64c26714c1446d25a85c8d40bc11edd438bc5"
     },
     "scripts/reproduce_abc.py": {
@@ -83,24 +161,24 @@
       "lf_normalized_sha256": "5a19184483ef0ac371d2bc5be96a0a24ae230b14bbd327554beb15163081685e"
     },
     "scripts/d01_contact_policy.py": {
-      "bytes": 26893,
-      "sha256": "dc71cbea3116c6a0a7cfa198fe7a78ff1dc6e7f9fac14da653e6cc934bdef20b",
-      "lf_normalized_sha256": "dc12de66fca937ff6a6fd5f7540f591c1ae7e0ead03a65636cec20f3ca525e70"
+      "bytes": 27086,
+      "sha256": "660beccc1fc221feb3ff3fd543e810e5cab9b2288cf93079f2ab29a4c4427593",
+      "lf_normalized_sha256": "660beccc1fc221feb3ff3fd543e810e5cab9b2288cf93079f2ab29a4c4427593"
     },
     "scripts/d02_report_assets.py": {
-      "bytes": 29028,
-      "sha256": "66b4ec14ce38fe997b8d036f92d1cd6a20768a58d5d15f4fda99273d60bf344f",
-      "lf_normalized_sha256": "113666655b2ea81e91ae578cf3134a23009b0aa24fe0f01b9edbf8abca2f2985"
+      "bytes": 28956,
+      "sha256": "0c90bce0257a29efa22f2d2483da725527541f21c16b5e4de59b174cd236913b",
+      "lf_normalized_sha256": "0c90bce0257a29efa22f2d2483da725527541f21c16b5e4de59b174cd236913b"
     },
     "scripts/reproduce_all.py": {
-      "bytes": 26827,
-      "sha256": "7b3cc29cc5515a102e04009dcb75a49b8369f4996c23d29c8a75886367704bce",
-      "lf_normalized_sha256": "ccae6c879d51a6a44160cce6b8ac8573c1a8663b0135a8447adf8327c43d941f"
+      "bytes": 27930,
+      "sha256": "d229e96172f22c6df21ad30293679b30dcb3b67cdd8082c7b455f013898a52b0",
+      "lf_normalized_sha256": "d229e96172f22c6df21ad30293679b30dcb3b67cdd8082c7b455f013898a52b0"
     },
     "scripts/result_bundle.py": {
-      "bytes": 15798,
-      "sha256": "75cc2863dba1e0b5ab7d4201f53ee6f024c0998533e037991bf331081df1836c",
-      "lf_normalized_sha256": "75cc2863dba1e0b5ab7d4201f53ee6f024c0998533e037991bf331081df1836c"
+      "bytes": 30548,
+      "sha256": "ad6c92630a6b53a837cf3dced4549ccdb1dfb4072641654c085839c36ad60591",
+      "lf_normalized_sha256": "ad6c92630a6b53a837cf3dced4549ccdb1dfb4072641654c085839c36ad60591"
     }
   },
   "claims": [
@@ -36151,5 +36229,520 @@
     "before_first_calculation_note": "只将说明中的PowerShell路径改为Python原始字符串，旧行注释保留；规则及policy_sha256未改变。",
     "original_registration_sha256": "3194e5c777283a3cfb6064ff31a84d617cc24a2c7ee50615cd2965e4bfdbc3a0",
     "note": "Public excerpt from the original pre-calculation record; source hashes are historical, current IO-only packaging changes leave the policy hash unchanged."
-  }
+  },
+  "chapter_evidence": [
+    {
+      "id": "E01",
+      "chapters": [
+        1
+      ],
+      "title": "分析对象与输出",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "protocol.label",
+          "value": "y"
+        },
+        {
+          "key": "protocol.positive_label",
+          "value": "yes"
+        },
+        {
+          "key": "contact_policy.policy.unit",
+          "value": "record-level gate using prior-contact count and last campaign result; no customer identifier"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "chapters": [
+        2
+      ],
+      "title": "样本与标签",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "data.n_rows",
+          "value": 41188
+        },
+        {
+          "key": "data.n_columns",
+          "value": 21
+        },
+        {
+          "key": "data.n_positive",
+          "value": 4640
+        },
+        {
+          "key": "data.positive_rate",
+          "value": 0.112654
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "chapters": [
+        2
+      ],
+      "title": "质量处理",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "data.n_duplicated_rows",
+          "value": 12
+        },
+        {
+          "key": "data.n_pdays_999",
+          "value": 39673
+        },
+        {
+          "key": "data.n_nan_cells",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "chapters": [
+        2
+      ],
+      "title": "unknown按列计数",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "data.unknown_count_by_column.job",
+          "value": 330
+        },
+        {
+          "key": "data.unknown_count_by_column.marital",
+          "value": 80
+        },
+        {
+          "key": "data.unknown_count_by_column.education",
+          "value": 1731
+        },
+        {
+          "key": "data.unknown_count_by_column.default",
+          "value": 8597
+        },
+        {
+          "key": "data.unknown_count_by_column.housing",
+          "value": 990
+        },
+        {
+          "key": "data.unknown_count_by_column.loan",
+          "value": 990
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "chapters": [
+        2,
+        4,
+        6
+      ],
+      "title": "行序切分与分布变化",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "data.n_train",
+          "value": 24712
+        },
+        {
+          "key": "data.n_validation",
+          "value": 8238
+        },
+        {
+          "key": "data.n_test",
+          "value": 8238
+        },
+        {
+          "key": "data.positive_rate_by_fold.train",
+          "value": 0.048074
+        },
+        {
+          "key": "data.positive_rate_by_fold.validation",
+          "value": 0.110706
+        },
+        {
+          "key": "data.positive_rate_by_fold.test",
+          "value": 0.308327
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "chapters": [
+        3
+      ],
+      "title": "主特征与选参",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "data.main_feature_count",
+          "value": 14
+        },
+        {
+          "key": "model_selection.seed",
+          "value": 42
+        },
+        {
+          "key": "model_selection.selection_fold",
+          "value": "validation"
+        },
+        {
+          "key": "model_selection.selected_parameters.logistic.C",
+          "value": 100.0
+        }
+      ]
+    },
+    {
+      "id": "E07",
+      "chapters": [
+        3
+      ],
+      "title": "Validation证据",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "validation.models.2.validation_pr_auc",
+          "value": 0.208115
+        },
+        {
+          "key": "validation.models.2.hits_at_30pct",
+          "value": 488
+        }
+      ]
+    },
+    {
+      "id": "E08",
+      "chapters": [
+        4
+      ],
+      "title": "工作点及主模型",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "protocol.test_rows",
+          "value": 8238
+        },
+        {
+          "key": "protocol.test_positive_rows",
+          "value": 2540
+        },
+        {
+          "key": "protocol.work_fraction",
+          "value": 0.3
+        },
+        {
+          "key": "protocol.k_at_30pct",
+          "value": 2472
+        },
+        {
+          "key": "models.logistic.pr_auc",
+          "value": 0.44827396573339506
+        },
+        {
+          "key": "models.logistic.precision_at_k",
+          "value": 0.4854368932038835
+        },
+        {
+          "key": "models.logistic.recall_at_k",
+          "value": 0.47244094488188976
+        }
+      ]
+    },
+    {
+      "id": "E09",
+      "chapters": [
+        1,
+        4
+      ],
+      "title": "三个成功标准",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "business.extra_hits_vs_rule",
+          "value": 276
+        },
+        {
+          "key": "business.invalid_calls_avoided_vs_rule",
+          "value": 276
+        },
+        {
+          "key": "business.missed_subscriptions_at_k",
+          "value": 1340
+        }
+      ]
+    },
+    {
+      "id": "E10",
+      "chapters": [
+        4
+      ],
+      "title": "固定模型比较",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "models.poutcome_success.pr_auc",
+          "value": 0.43307518191070526
+        },
+        {
+          "key": "models.logistic.pr_auc",
+          "value": 0.44827396573339506
+        },
+        {
+          "key": "models.decision_tree.pr_auc",
+          "value": 0.43957494205651143
+        },
+        {
+          "key": "models.random_forest.pr_auc",
+          "value": 0.40376747401272917
+        }
+      ]
+    },
+    {
+      "id": "E11",
+      "chapters": [
+        4
+      ],
+      "title": "duration消融",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "ablation.test_pr_auc_main",
+          "value": 0.44827396573339506
+        },
+        {
+          "key": "ablation.test_pr_auc_with_duration",
+          "value": 0.5363519371863723
+        },
+        {
+          "key": "ablation.test_pr_auc_absolute_difference",
+          "value": 0.08807797145297724
+        },
+        {
+          "key": "ablation.test_hits_absolute_difference",
+          "value": 234
+        }
+      ]
+    },
+    {
+      "id": "E12",
+      "chapters": [
+        4
+      ],
+      "title": "失败切片",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "error_slices.records.0.sample_n",
+          "value": 2145
+        },
+        {
+          "key": "error_slices.records.0.positives",
+          "value": 480
+        },
+        {
+          "key": "error_slices.records.0.recall",
+          "value": 0.14375
+        },
+        {
+          "key": "error_slices.records.0.fn",
+          "value": 411
+        }
+      ]
+    },
+    {
+      "id": "E13",
+      "chapters": [
+        4
+      ],
+      "title": "原主模型三例失败案例",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "failure_cases.0.row_id",
+          "value": 36501
+        },
+        {
+          "key": "failure_cases.1.row_id",
+          "value": 36526
+        },
+        {
+          "key": "failure_cases.2.row_id",
+          "value": 40857
+        }
+      ]
+    },
+    {
+      "id": "E14",
+      "chapters": [
+        4,
+        6
+      ],
+      "title": "10%预算反例",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "sensitivity.records.0.hits",
+          "value": 417
+        },
+        {
+          "key": "sensitivity.records.10.hits",
+          "value": 536
+        }
+      ]
+    },
+    {
+      "id": "E15",
+      "chapters": [
+        5
+      ],
+      "title": "示例联系闸门",
+      "kind": "predefined_assumption",
+      "bindings": [
+        {
+          "key": "contact_policy.policy.previous_minimum",
+          "value": 3
+        },
+        {
+          "key": "contact_policy.policy.poutcome_equals",
+          "value": "failure"
+        },
+        {
+          "key": "contact_policy.policy.primary_scenario",
+          "value": "hold_no_refill"
+        }
+      ]
+    },
+    {
+      "id": "E16",
+      "chapters": [
+        5
+      ],
+      "title": "主情景代价",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "contact_policy.folds.test.hold_no_refill.contacts",
+          "value": 2455
+        },
+        {
+          "key": "contact_policy.folds.test.hold_no_refill.hits",
+          "value": 1197
+        },
+        {
+          "key": "contact_policy.folds.test.hold_no_refill.net_invalid_calls_avoided",
+          "value": 14
+        },
+        {
+          "key": "contact_policy.folds.test.hold_no_refill.net_extra_missed_vs_baseline",
+          "value": 3
+        },
+        {
+          "key": "contact_policy.folds.test.hold_no_refill.missed_subscriptions",
+          "value": 1343
+        }
+      ]
+    },
+    {
+      "id": "E17",
+      "chapters": [
+        5
+      ],
+      "title": "触发群体与名单损失",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "contact_policy.folds.test.triggered_records",
+          "value": 120
+        },
+        {
+          "key": "contact_policy.folds.test.triggered_positive_total",
+          "value": 42
+        },
+        {
+          "key": "contact_policy.folds.test.triggered_original_selected",
+          "value": 17
+        },
+        {
+          "key": "contact_policy.folds.test.triggered_original_selected_positive",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "E18",
+      "chapters": [
+        5
+      ],
+      "title": "固定递补对照",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "contact_policy.folds.test.hold_with_refill.contacts",
+          "value": 2472
+        },
+        {
+          "key": "contact_policy.folds.test.hold_with_refill.hits",
+          "value": 1208
+        },
+        {
+          "key": "contact_policy.folds.test.hold_with_refill.replacement_hits",
+          "value": 11
+        },
+        {
+          "key": "contact_policy.folds.test.hold_with_refill.net_hits_change_vs_baseline",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "id": "E19",
+      "chapters": [
+        5,
+        6
+      ],
+      "title": "策略验证边界",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "contact_policy.folds.validation.triggered_records",
+          "value": 2
+        },
+        {
+          "key": "contact_policy.folds.validation.triggered_original_selected",
+          "value": 0
+        },
+        {
+          "key": "contact_policy.evaluation_type",
+          "value": "post-hoc descriptive supplementary replay; not new unseen Test validation"
+        }
+      ]
+    },
+    {
+      "id": "E20",
+      "chapters": [
+        6
+      ],
+      "title": "限制与结论",
+      "kind": "observed",
+      "bindings": [
+        {
+          "key": "guardrails.no_causal_claim",
+          "value": true
+        },
+        {
+          "key": "guardrails.no_uplift_claim",
+          "value": true
+        },
+        {
+          "key": "guardrails.does_not_deploy_or_call_customers",
+          "value": true
+        }
+      ]
+    }
+  ]
 }

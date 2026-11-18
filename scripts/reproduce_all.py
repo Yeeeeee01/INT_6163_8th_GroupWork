@@ -222,16 +222,22 @@ def main():
     parser.add_argument('--font-family',help='Optional installed CJK font for F5')
     parser.add_argument('--check-only',action='store_true',help='Validate inputs without training')
     # [D04_02-06 新增：只对已经成功的同次运行重复打包，不重新训练]
-    parser.add_argument('--package-run',type=Path)
+    # [D05-01 原行保留]
+    # parser.add_argument('--package-run',type=Path)
+    parser.add_argument('--publish-run',type=Path,help='Recreate the direct result directory of an already successful run')
     args=parser.parse_args();base=args.output_root.resolve();allowed=(ROOT/'runs').resolve()
     if base!=allowed and allowed not in base.parents:raise ValueError('output-root must be runs/ or a child of runs/; root/historical files cannot be overwritten')
     deepest=base/('f'*16)/'abc/workspace/local_review/C01_candidate/outputs/C_测试集模型比较表.md'
     if os.name=='nt' and len(str(deepest))>245:raise ValueError('Project path is too long for Windows output files; use a shorter checkout/output-root within runs/')
     contract,observed=preflight()
     if args.check_only:print('[D04_PREFLIGHT_PASS] declared environment, raw inputs, code and authored report verified');return
-    if args.package_run is not None:
-        package=load_packager().package_verified_run(ROOT,(ROOT/args.package_run).resolve(),contract,compare,scientific)
-        print('[RESULTS_PACKAGED] '+str(package['members'])+' members; '+package['sha256']);return
+    # [D05-02 原重复压缩入口逐行保留]
+    # if args.package_run is not None:
+    # package=load_packager().package_verified_run(ROOT,(ROOT/args.package_run).resolve(),contract,compare,scientific)
+    # print('[RESULTS_PACKAGED] '+str(package['members'])+' members; '+package['sha256']);return
+    if args.publish_run is not None:
+        result=load_packager().publish_verified_run(ROOT,(ROOT/args.publish_run).resolve(),contract,compare,scientific)
+        print('[RESULTS_DIRECTORY] '+str(result['directory'])+'; '+str(result['files'])+' direct files');return
     # One compatibility workspace, a short unique run name, and no nested reproduce_abc run.
     run=base/format(time.time_ns(),'x');run.mkdir(parents=True,exist_ok=False)
     workspace=run
@@ -309,9 +315,15 @@ def main():
            '| 内容 | 本次实际文件 |','|---|---|',
            # [D04_02-08 原阶段数字源链接保留]
            # '| 统一数字源（含补充回放） | [metrics.json]('+a('D01/metrics.json')+') |',
-           '| 正式统一数字源与文档登记 | [metrics.json](report/metrics.json) |',
-           '| 正式T5与完整数字CSV | [T5](report/T5_数字核对表.md) / [CSV](report/T5_all_numbers.csv) |',
-           '| ABC与D统一结果ZIP | [ABCD_verified.zip](results/ABCD_verified.zip) |',
+           # [D05-03 原行保留]
+           # '| 正式统一数字源与文档登记 | [metrics.json](report/metrics.json) |',
+           '| 正式统一数字源与文档登记 | [metrics.json](publication/outputs/metrics.json) |',
+           # [D05-04 原行保留]
+           # '| 正式T5与完整数字CSV | [T5](report/T5_数字核对表.md) / [CSV](report/T5_all_numbers.csv) |',
+           '| 正式T5与完整数字CSV | [T5](publication/outputs/T5_数字核对表.md) / [CSV](publication/outputs/T5_all_numbers.csv) |',
+           # [D05-05 原行保留]
+           # '| ABC与D统一结果ZIP | [ABCD_verified.zip](results/ABCD_verified.zip) |',
+           '| 三项D交付物 | [report.docx](publication/report.docx) / [F5](publication/outputs/F5_行动闭环.png) / [章节对应表](publication/outputs/章节_图表_数字对应表.md) |',
            '| Test模型比较 | [C_测试集模型比较表.md]('+a('C_outputs/C_测试集模型比较表.md')+') |',
            '| 固定规则及代价 | [T6_联系限制补充评价.md]('+a('D01/T6_联系限制补充评价.md')+') |',
            '| 建议行动流程 | [F5 PNG]('+a('D02/F5_行动闭环.png')+') / [SVG]('+a('D02/F5_行动闭环.svg')+') |',
@@ -321,7 +333,9 @@ def main():
            '内部兼容目录local_review是本次新生成的工作目录，不需要复制本机原local_review。',
            # [D04_02-09 原阶段状态保留]
            # '字体可能改变图像字节；科学值、规则和图内数字仍须核对。完整提交快照与T5/PPT页码在后续整合中完成。']
-           '字体可能改变图像字节；正式T5报告页码按已验收Word指纹登记，PPT页码待实际稿。原GitHub基线覆盖组合验收尚待后续。']
+           # [D05-07 原行保留]
+           # '字体可能改变图像字节；正式T5报告页码按已验收Word指纹登记，PPT页码待实际稿。原GitHub基线覆盖组合验收尚待后续。']
+           '字体可能改变图像字节；正式T5报告页码按已验收Word指纹登记。所有公开产物直接浏览，publication/可对应仓库目录。']
     (run/'RUN_RESULTS.md').write_text('\n'.join(index)+'\n',encoding='utf-8')
     metadata.update({'status':'ABCD_REPRODUCED','matched_report_claims':len(bindings),'scientific_reference_matched':True,
                      'metrics_relative_to_run':d_metrics.relative_to(run).as_posix(),'artifact_index':'artifact_index.json','index':'RUN_RESULTS.md',
@@ -329,8 +343,11 @@ def main():
     write(run/'run_manifest.json',metadata)
     (base/'latest_run.txt').write_text(run.relative_to(ROOT).as_posix(),encoding='utf-8')
     # [D04_02-10 新增：科学重建成功后才打包，report.docx始终不重生成]
-    package=load_packager().package_verified_run(ROOT,run,contract,compare,scientific)
-    print('[RESULTS_PACKAGED] '+str(run/package['snapshot']),flush=True)
+    # [D05-06 原压缩结果输出保留]
+    # package=load_packager().package_verified_run(ROOT,run,contract,compare,scientific)
+    # print('[RESULTS_PACKAGED] '+str(run/package['snapshot']),flush=True)
+    result=load_packager().publish_verified_run(ROOT,run,contract,compare,scientific)
+    print('[RESULTS_DIRECTORY] '+str(run/result['directory']),flush=True)
     print('[ABCD_REPRODUCED] '+str(run/'RUN_RESULTS.md'),flush=True)
     print('[REPORT_EVIDENCE] '+str(len(bindings))+'/'+str(len(bindings))+' matched; authored report unchanged',flush=True)
 

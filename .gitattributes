@@ -1,9 +1,12 @@
-# A01：规范Git检出的原始CSV换行；不改写本机现有原始数据。
+# Keep input content stable across Git checkouts; raw archives and Word are binary.
 data/raw/*.csv text eol=lf
 data/raw/*.zip -text
-
-# P01: publish the result snapshot without text conversion.
-results/*.zip -text
-
-# D04_02: preserve the authored Word submission as binary.
 report.docx -text
+*.py text eol=lf
+*.ipynb text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+outputs/*.csv text eol=lf
+outputs/*.svg text eol=lf
+*.png -text
