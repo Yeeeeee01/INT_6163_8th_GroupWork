@@ -92,26 +92,26 @@ def numeric_documents(metrics,contract):
         if not claim.get('report_pages') or claim.get('ppt_pages') is not None:raise ValueError('Report pages absent or unverified PPT pages supplied')
         direct.setdefault(claim['key'],set()).update(claim['report_pages'])
     stream=StringIO(newline='');writer=csv.writer(stream,lineterminator='\n')
-    writer.writerow(['metrics.json键名','原值','类型','报告页码','引用类型','图数据来源','PPT页码','数字源文件'])
+    writer.writerow(['metrics.json键名','原值','类型','报告页码','引用类型','图数据来源','数字源文件'])
     count=0
     for key,value in leaves(metrics):
         figures=[(name,page) for name,prefixes,page in rules if any(key.startswith(p) if p.endswith('.') else key==p for p in prefixes)]
         pages=sorted(direct.get(key,set())|{p for _,p in figures})
         kind='正文或表格' if key in direct else ('图数据源，非逐项文字引用' if figures else '未在报告逐项引用')
         if not figures and key not in direct and (key.startswith(('reproducibility.','contact_policy.provenance.','report_evidence.')) or key in ['data.raw_file_bytes']):kind='来源或版式元数据，非实验成效'
-        writer.writerow([key,repr(value),type(value).__name__,','.join(map(str,pages)) or '未引用',kind,','.join(name for name,_ in figures),'待E实际PPT核对','metrics.json'])
+        writer.writerow([key,repr(value),type(value).__name__,','.join(map(str,pages)) or '未引用',kind,','.join(name for name,_ in figures),'metrics.json'])
         count+=1
     lines=['# T5 数字与报告页码核对表','',
            '正式数字源为同目录[metrics.json](metrics.json)。本表逐项登记报告107处科学数字；完整JSON数值叶子见[T5_all_numbers.csv](T5_all_numbers.csv)。',
-           '页码来自已实际渲染核对的8页report.docx，并以报告SHA256绑定；分析脚本不假装重新计算Word页码。PPT尚未登记，所有PPT页码保持待核对。',
+           '页码来自已实际渲染核对的8页report.docx，并以报告SHA256绑定；分析脚本不假装重新计算Word页码。',
            '正式指标、表和图直接位于outputs/及figures/；B/C/D01清单保留原运行路径语义，公开路径由publication_manifest.json登记。','',
            '报告SHA256：`'+contract['report']['sha256']+'`。','',
-           '| 序号 | 报告显示值 | metrics.json键 | 报告页码 | PPT页码 |','|---:|---|---|---|---|']
+           '| 序号 | 报告显示值 | metrics.json键 | 报告页码 |','|---:|---|---|---|']
     for i,claim in enumerate(claims,1):
         value=resolve(metrics,claim['key']);expected=claim['raw_value']
         matches=math.isclose(value,expected,rel_tol=0,abs_tol=1e-12) if isinstance(expected,float) else value==expected
         if not matches:raise ValueError('T5 numeric claim differs: '+claim['key'])
-        lines.append('| '+str(i)+' | '+claim['display']+' | `'+claim['key']+'` | '+','.join(map(str,claim['report_pages']))+' | 待E实际PPT核对 |')
+        lines.append('| '+str(i)+' | '+claim['display']+' | `'+claim['key']+'` | '+','.join(map(str,claim['report_pages']))+' |')
     lines += ['', '## 图中数据的JSON来源','',
               '下表登记图数据源与报告页码；曲线数据、刻度和正文单独数字不是同一概念。完整CSV将“正文或表格”“图数据源”及“元数据”分开标示，不为未引用值编报告页码。','',
               '| 图资源 | 报告页码 | 原始键或键前缀 |','|---|---:|---|']
